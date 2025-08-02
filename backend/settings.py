@@ -93,11 +93,12 @@ AUTH_USER_MODEL = 'accounts.User'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:3001',
-    'http://192.168.101.13:3000',  # Updated to match your React app's current URL
-    'http://192.168.101.13:3000',  # Keep if still relevant
-    'http://127.0.0.1:3000',       # Keep for local testing
-    'https://your-react-app.azurestaticapps.net',
+    'http://192.168.101.13:3000',
+    'http://127.0.0.1:3000',
+    'https://yellow-plant-07286ab0f.2.azurestaticapps.net',
 ]
+
+
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
