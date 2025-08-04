@@ -95,7 +95,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3001',
     'http://192.168.101.13:3000',
     'http://127.0.0.1:3000',
-    'https://yellow-plant-07286ab0f.2.azurestaticapps.net',
+    'https://gray-bay-08d8d431e.1.azurestaticapps.net',
 ]
 
 
