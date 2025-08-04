@@ -85,17 +85,23 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True  # Allow cookies
-CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read the CSRF token
-CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
+CSRF_COOKIE_HTTPONLY = False   # Allow JavaScript to read CSRF token
+CSRF_COOKIE_SECURE = True      # Must be True in production (HTTPS)
+SESSION_COOKIE_SECURE = True   # Also secure sessions
 
 AUTH_USER_MODEL = 'accounts.User'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'http://192.168.101.13:3000',
-    'http://127.0.0.1:3000',
-    'https://gray-bay-08d8d431e.1.azurestaticapps.net',
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://192.168.101.13:3000",
+    "http://127.0.0.1:3000",
+    "https://gray-bay-08d8d431e.1.azurestaticapps.net",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://gray-bay-08d8d431e.1.azurestaticapps.net",
+    "https://kenyonltd-cmf5baa0fhcqahgj.canadacentral-01.azurewebsites.net",
 ]
 
 
