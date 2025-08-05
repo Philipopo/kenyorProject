@@ -61,3 +61,20 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.full_name or self.user.email
+
+
+# Page-based permission
+class PagePermission(models.Model):
+    page_name = models.CharField(max_length=100, unique=True)  # e.g., "items", "finance", "warehouse"
+    min_role = models.CharField(max_length=30, choices=ROLE_CHOICES, default='staff')
+
+    def __str__(self):
+        return f"Page: {self.page_name} requires {self.min_role}+"
+
+# Action-based permission
+class ActionPermission(models.Model):
+    action_name = models.CharField(max_length=100, unique=True)  # e.g., "create_item", "delete_item"
+    min_role = models.CharField(max_length=30, choices=ROLE_CHOICES, default='staff')
+
+    def __str__(self):
+        return f"Action: {self.action_name} requires {self.min_role}+"

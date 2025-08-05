@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.html import format_html
-from .models import User, UserProfile
+from .models import User, UserProfile, PagePermission, ActionPermission
 
 # Inline for the UserProfile
 class UserProfileInline(admin.StackedInline):
@@ -56,6 +56,22 @@ class CustomUserAdmin(BaseUserAdmin):
         if not obj:
             return []
         return super().get_inline_instances(request, obj)
+
+
+@admin.register(PagePermission)
+class PagePermissionAdmin(admin.ModelAdmin):
+    list_display = ("page_name", "min_role")
+    list_filter = ("min_role",)
+    search_fields = ("page_name",)
+
+
+@admin.register(ActionPermission)
+class ActionPermissionAdmin(admin.ModelAdmin):
+    list_display = ("action_name", "min_role")
+    list_filter = ("min_role",)
+    search_fields = ("action_name",)
+
+
 
 # Register models
 admin.site.register(User, CustomUserAdmin)

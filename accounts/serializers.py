@@ -1,8 +1,21 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import UserProfile
+from .models import PagePermission, ActionPermission
+
 
 User = get_user_model()
+
+
+class PagePermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PagePermission
+        fields = ['id', 'page_name', 'min_role']
+
+class ActionPermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ActionPermission
+        fields = ['id', 'action_name', 'min_role']
 
 # For user registration
 class RegisterSerializer(serializers.ModelSerializer):

@@ -2,19 +2,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework import generics, status, permissions, serializers
+from rest_framework import generics, status, permissions, serializers, viewsets
 from rest_framework.generics import CreateAPIView, DestroyAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.tokens import OutstandingToken, BlacklistedToken
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
 
-
-from .models import User, UserProfile
+from .models import User, UserProfile, PagePermission, ActionPermission
 from .serializers import (
     RegisterSerializer,
     UserSerializer,
@@ -22,23 +16,27 @@ from .serializers import (
     UserProfileSerializer,
     ProfileSerializer,
     ProfilePictureUploadSerializer,
+    PagePermissionSerializer,
+    ActionPermissionSerializer,
 )
-
 from .token_serializers import CustomTokenObtainPairSerializer
 from accounts.permissions import HasMinimumRole
 
 
-
+# -------------------------
+# Role-based Access Example
+# -------------------------
 class SomeProtectedView(APIView):
     permission_classes = [IsAuthenticated, HasMinimumRole]
-    required_role_level = 2  # Only operations_manager (3), md (4), and admin (5) can access
+    required_role_level = 2  # Only finance_manager (2), operations_manager (3), md (4), admin (5)
 
     def get(self, request):
         return Response({"message": "Authorized access"})
 
 
-
-# 🔐 Get logged-in user basic info
+# -------------------------
+# User Info / Auth
+# -------------------------
 class MeView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -52,14 +50,13 @@ class MeView(APIView):
         })
 
 
-# 🔐 JWT login with user details
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
 
-
-
-# GET & PATCH Profile Info
+# -------------------------
+# Profile Management
+# -------------------------
 class UserProfileView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ProfileSerializer
@@ -68,10 +65,10 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
         profile, created = UserProfile.objects.get_or_create(user=self.request.user)
         return profile
 
-# POST Upload Profile Image only
+
 class ProfilePictureUploadView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-    parser_classes = [MultiPartParser, FormParser]  # Add this line
+    parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, *args, **kwargs):
         profile, created = UserProfile.objects.get_or_create(user=request.user)
@@ -79,18 +76,22 @@ class ProfilePictureUploadView(APIView):
 
         if serializer.is_valid():
             serializer.save()
-            return Response({"detail": "Profile image uploaded successfully.", "profile_image": serializer.data['profile_image']})
+            return Response({
+                "detail": "Profile image uploaded successfully.",
+                "profile_image": serializer.data['profile_image']
+            })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 🧾 Get all users (admin/staff)
+# -------------------------
+# User Management
+# -------------------------
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all().order_by('id')
     serializer_class = UserListSerializer
     permission_classes = [IsAuthenticated]
 
 
-# ✍️ Register user (open to public)
 class RegisterView(APIView):
     permission_classes = [AllowAny]
 
@@ -102,7 +103,6 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# 👁 Get logged-in user info
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -111,7 +111,9 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
-# 🔑 Change password
+# -------------------------
+# Password Change
+# -------------------------
 class ChangePasswordSerializer(serializers.Serializer):
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
@@ -131,7 +133,9 @@ class ChangePasswordView(APIView):
         return Response(serializer.errors, status=400)
 
 
-# 👮 Admin create user with default password
+# -------------------------
+# Admin User Management
+# -------------------------
 class AdminCreateUserView(CreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = RegisterSerializer
@@ -149,7 +153,6 @@ class AdminCreateUserView(CreateAPIView):
         return Response(serializer.errors, status=400)
 
 
-# ❌ Admin deletes user
 class AdminDeleteUserView(DestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
@@ -161,6 +164,9 @@ class AdminDeleteUserView(DestroyAPIView):
         return super().delete(request, *args, **kwargs)
 
 
+# -------------------------
+# Logout
+# -------------------------
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -171,8 +177,62 @@ class LogoutView(APIView):
                 return Response({"detail": "Refresh token is required."}, status=status.HTTP_400_BAD_REQUEST)
 
             token = RefreshToken(refresh_token)
-            token.blacklist()  # This only works if you have blacklist app enabled
-
+            token.blacklist()
             return Response({"detail": "Successfully logged out."}, status=status.HTTP_205_RESET_CONTENT)
         except TokenError:
             return Response({"detail": "Invalid or expired token."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# -------------------------
+# Permissions Management
+# -------------------------
+class IsAdminRole(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.role == "admin"
+
+
+class PagePermissionViewSet(viewsets.ModelViewSet):
+    queryset = PagePermission.objects.all()
+    serializer_class = PagePermissionSerializer
+    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+
+    def create(self, request, *args, **kwargs):
+        page_name = request.data.get("page_name")
+        if not page_name:
+            return Response({"detail": "page_name is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # If a record exists → update it instead of throwing error
+        instance = PagePermission.objects.filter(page_name=page_name).first()
+        if instance:
+            serializer = self.get_serializer(instance, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        # Otherwise → create new
+        return super().create(request, *args, **kwargs)
+
+
+class ActionPermissionViewSet(viewsets.ModelViewSet):
+    queryset = ActionPermission.objects.all()
+    serializer_class = ActionPermissionSerializer
+    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()
+        # Default to 'staff' if not provided
+        if "min_role" not in data:
+            data["min_role"] = "staff"
+
+        instance = ActionPermission.objects.filter(action_name=data.get("action_name")).first()
+        if instance:
+            serializer = self.get_serializer(instance, data=data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
