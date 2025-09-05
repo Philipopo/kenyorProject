@@ -61,10 +61,21 @@ jobs:
       - name: Wait before deploy (avoid SCM restart conflict)
         run: sleep 30
 
-      - name: Deploy to Azure Web App with retry
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'newpythonkenyon'
-          slot-name: 'Production'
-        retry: 3   # GitHub built-in retry for transient errors
+      - name: Deploy to Azure Web App (with retry)
+        run: |
+          n=0
+          until [ "$n" -ge 3 ]
+          do
+            echo "Attempt $((n+1)) to deploy..."
+            if npx @azure/webapps-deploy \
+              --app-name newpythonkenyon \
+              --slot-name Production; then
+              echo "Deployment succeeded!"
+              exit 0
+            fi
+            n=$((n+1))
+            echo "Deployment failed. Retrying in 20 seconds..."
+            sleep 20
+          done
+          echo "Deployment failed after 3 attempts."
+          exit 1
