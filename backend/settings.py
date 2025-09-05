@@ -104,10 +104,10 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://gray-bay-08d8d431e.1.azurestaticapps.net",
     "https://kenyonltd-cmf5baa0fhcqahgj.canadacentral-01.azurewebsites.net",
-    "http://scm.kenyon-international.com",
+    "https://scm.kenyon-international.com",
 ]
 
-FRONTEND_URL = "http://scm.kenyon-international.com"  # or "https://gray-bay-08d8d431e.1.azurestaticapps.net" for local testing
+FRONTEND_URL = "https://scm.kenyon-international.com"  # or "https://gray-bay-08d8d431e.1.azurestaticapps.net" for local testing
 MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/jt8l5h53qqhpxfmb8iogerggheif47u3"  # Replace with Make webhook URL after Step 2
 
 ROOT_URLCONF = 'backend.urls'
