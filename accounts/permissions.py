@@ -1,4 +1,4 @@
-
+# accounts/permissions.py
 from rest_framework.permissions import BasePermission
 from .models import PagePermission, ActionPermission
 
@@ -14,43 +14,91 @@ class HasMinimumRole(BasePermission):
     """
     Grant access only if user has the required role level or higher.
     """
-
     def has_permission(self, request, view):
         required_level = getattr(view, 'required_role_level', 1)
         user_role = getattr(request.user, 'role', 'staff')
-        user_level = ROLE_LEVELS.get(user_role.lower(), 0)  # fix: ensure lowercase
+        user_level = ROLE_LEVELS.get(user_role.lower(), 0)  # ensure lowercase
         return user_level >= required_level
-        
 
 class DynamicPermission(BasePermission):
+    """
+    Central, DB-backed permission check.
+
+    Works with PagePermission (by view.page_permission_name) and
+    ActionPermission (by view.action_permission_name or auto-inferred).
+
+    If a PagePermission/ActionPermission record is missing in DB, access is denied
+    (fail-safe deny).
+    """
+    # Optional helpers to infer create actions from request + page
+    CREATE_ACTIONS = {
+        'requisitions': 'create_requisition',
+        'purchase_orders': 'create_purchase_order',
+        'po_items': 'create_po_item',
+        'receiving': 'create_receiving',
+        'goods_receipts': 'create_goods_receipt',
+        'vendors': 'add_vendor',
+        'receipt_archive': 'create_receipt',
+        'stock_receipts': 'create_stock_receipt',
+        'signing_receipts': 'create_signing_receipt',
+        'rentals_active': 'create_rental',  # Added
+        'rentals_equipment': 'create_equipment',  # Added
+        'rentals_payments': 'create_payment',  # Added
+        'analytics_dwell': 'create_dwell',  # Added
+        'analytics_eoq': 'create_eoq',  # Added
+        'analytics_stock': 'create_stock_analytics',  # Added
+    }
+    DELETE_ACTIONS = {
+        'vendors': 'delete_vendor',
+        'rentals_active': 'delete_rental',  # Added
+    }
+
     def has_permission(self, request, view):
-        # Check if the view requires a page permission
+        user = getattr(request, "user", None)
+        if not user or not user.is_authenticated:
+            return False
+
+        user_role = getattr(user, 'role', 'staff') or 'staff'
+        user_level = ROLE_LEVELS.get(user_role.lower(), 0)
+
+        # ---- Page check ----
         page_name = getattr(view, 'page_permission_name', None)
-        action_name = getattr(view, 'action_permission_name', None)
-
-        user_role = request.user.role
-        user_level = ROLE_HIERARCHY.get(user_role, 0)
-
-        # Page check
         if page_name:
             try:
                 page_perm = PagePermission.objects.get(page_name=page_name)
-                required_level = ROLE_HIERARCHY[page_perm.min_role]
+                required_level = ROLE_LEVELS[page_perm.min_role]
                 if user_level < required_level:
                     return False
             except PagePermission.DoesNotExist:
-                return False  # No config = deny
+                # No config => deny
+                return False
 
-        # Action check
+        # ---- Action check ----
+        action_name = getattr(view, 'action_permission_name', None)
+
+        # If not explicitly set, try to infer actions
+        if not action_name and page_name:
+            if request.method == 'POST':
+                action_name = self.CREATE_ACTIONS.get(page_name)
+            elif request.method == 'DELETE':
+                action_name = self.DELETE_ACTIONS.get(page_name)
+            else:
+                action_attr = getattr(view, 'action', None)
+                if action_attr in ('approve', 'approve_requisition') and page_name == 'requisitions':
+                    action_name = 'approve_requisition'
+                elif action_attr in ('approve', 'approve_purchase_order') and page_name == 'purchase_orders':
+                    action_name = 'approve_purchase_order'
+
+        # If we have an action to enforce, check it against DB
         if action_name:
             try:
                 action_perm = ActionPermission.objects.get(action_name=action_name)
-                required_level = ROLE_HIERARCHY[action_perm.min_role]
+                required_level = ROLE_LEVELS[action_perm.min_role]
                 if user_level < required_level:
                     return False
             except ActionPermission.DoesNotExist:
-                return False  # No config = deny
+                # No config => deny
+                return False
 
+        # If no action_name applicable, page-level decision already handled.
         return True
-
-

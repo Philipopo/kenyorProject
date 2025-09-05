@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/settings/', include('settings.urls')),
     path('api/alerts/', include('alerts.urls')),
     path('api/warehouse/', include('warehouse.urls')),
+    path('api/product-documentation/', include('product_documentation.urls')),
    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

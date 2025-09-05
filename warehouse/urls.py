@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import WarehouseItemListCreateView
+# warehouse/urls.py
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import WarehouseItemViewSet
+
+router = DefaultRouter()
+router.register(r'items', WarehouseItemViewSet, basename='warehouse-item')
 
 urlpatterns = [
-    path('items/', WarehouseItemListCreateView.as_view(), name='warehouse-items'),
+    path('', include(router.urls)),
 ]

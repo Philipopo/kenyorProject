@@ -1,18 +1,21 @@
+# warehouse/models.py
 from django.db import models
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from django.conf import settings
+from product_documentation.models import ProductSerialNumber
 
 class WarehouseItem(models.Model):
-    item = models.CharField(max_length=100)
+    serial_number = models.ForeignKey(ProductSerialNumber, on_delete=models.CASCADE, related_name='warehouse_items')
     location = models.CharField(max_length=100)
-    status = models.CharField(max_length=20, choices=[
-        ('In Stock', 'In Stock'),
-        ('Low', 'Low'),
-        ('Empty', 'Empty'),
-    ])
+    status = models.CharField(
+        max_length=20,
+        choices=(('in_stock', 'In Stock'), ('reserved', 'Reserved'), ('dispatched', 'Dispatched')),
+        default='in_stock'
+    )
     last_updated = models.DateTimeField(auto_now=True)
-    updated_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        ordering = ['-last_updated']
 
     def __str__(self):
-        return self.item
+        return f"{self.serial_number.serial_number} at {self.location}"
