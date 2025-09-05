@@ -98,11 +98,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.101.13:3000",
     "http://127.0.0.1:3000",
     "https://gray-bay-08d8d431e.1.azurestaticapps.net",
+    "http://scm.kenyon-international.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://gray-bay-08d8d431e.1.azurestaticapps.net",
     "https://kenyonltd-cmf5baa0fhcqahgj.canadacentral-01.azurewebsites.net",
+    "http://scm.kenyon-international.com",
 ]
 
 FRONTEND_URL = "http://scm.kenyon-international.com"  # or "https://gray-bay-08d8d431e.1.azurestaticapps.net" for local testing
