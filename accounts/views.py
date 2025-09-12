@@ -1,4 +1,6 @@
-# accounts/views.py
+import logging
+import secrets
+import string
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -8,21 +10,53 @@ from rest_framework.generics import CreateAPIView, DestroyAPIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
-from .models import PagePermission
-from rest_framework.decorators import api_view, permission_classes
-from .models import User, UserProfile, PagePermission, ActionPermission
+from rest_framework.decorators import api_view, permission_classes, action
+from django.views.decorators.csrf import csrf_exempt
+from .models import User, UserProfile, PagePermission, ActionPermission, ApiKey
 from .serializers import (
-    RegisterSerializer, UserSerializer, UserListSerializer, UserProfileSerializer,
-    ProfileSerializer, ProfilePictureUploadSerializer, PagePermissionSerializer,
-    ActionPermissionSerializer, ForgotPasswordSerializer, ResetPasswordSerializer
+    RegisterSerializer, UserSerializer, UserListSerializer, ProfileSerializer,
+    ProfilePictureUploadSerializer, ForgotPasswordSerializer,
+    ResetPasswordSerializer, PagePermissionSerializer, ActionPermissionSerializer, ApiKeySerializer
 )
 from .token_serializers import CustomTokenObtainPairSerializer
-from accounts.permissions import HasMinimumRole
+from .permissions import HasMinimumRole, APIKeyPermission
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.conf import settings
+from django.utils import timezone
 import requests
+from fuzzywuzzy import process
+
+logger = logging.getLogger(__name__)
+
+NIGERIAN_STATES = [
+    ('Abia', 'Abia'), ('Adamawa', 'Adamawa'), ('Akwa Ibom', 'Akwa Ibom'), ('Anambra', 'Anambra'),
+    ('Bauchi', 'Bauchi'), ('Bayelsa', 'Bayelsa'), ('Benue', 'Benue'), ('Borno', 'Borno'),
+    ('Cross River', 'Cross River'), ('Delta', 'Delta'), ('Ebonyi', 'Ebonyi'), ('Edo', 'Edo'),
+    ('Ekiti', 'Ekiti'), ('Enugu', 'Enugu'), ('FCT', 'Federal Capital Territory'),
+    ('Gombe', 'Gombe'), ('Imo', 'Imo'), ('Jigawa', 'Jigawa'), ('Kaduna', 'Kaduna'),
+    ('Kano', 'Kano'), ('Katsina', 'Katsina'), ('Kebbi', 'Kebbi'), ('Kogi', 'Kogi'),
+    ('Kwara', 'Kwara'), ('Lagos', 'Lagos'), ('Nasarawa', 'Nasarawa'), ('Niger', 'Niger'),
+    ('Ogun', 'Ogun'), ('Ondo', 'Ondo'), ('Osun', 'Osun'), ('Oyo', 'Oyo'),
+    ('Plateau', 'Plateau'), ('Rivers', 'Rivers'), ('Sokoto', 'Sokoto'),
+    ('Taraba', 'Taraba'), ('Yobe', 'Yobe'), ('Zamfara', 'Zamfara')
+]
+
+STATE_VARIATIONS = {
+    'Lagos State': 'Lagos',
+    'Abuja': 'FCT',
+    'Federal Capital Territory': 'FCT',
+    'Oyo State': 'Oyo',
+    'Kano State': 'Kano',
+    'Anambra State': 'Anambra',
+    'Rivers State': 'Rivers',
+    'Delta State': 'Delta',
+    'Abuja Federal Capital Territory': 'FCT',
+    'FCT Abuja': 'FCT',
+    'Kaduna State': 'Kaduna',
+    'Ogun State': 'Ogun',
+}
 
 ROLE_LEVELS = {
     "staff": 1,
@@ -32,7 +66,38 @@ ROLE_LEVELS = {
     "admin": 5,
 }
 
-# Existing views (unchanged except for imports and ForgotPasswordView/ResetPasswordView)
+def get_user_role_level(user):
+    return ROLE_LEVELS.get(getattr(user, 'role', 'staff').lower(), 0)
+
+def get_page_required_level(page):
+    perm = PagePermission.objects.filter(page_name=page).first()
+    return ROLE_LEVELS.get(perm.min_role.lower(), 1) if perm else 1
+
+def get_action_required_level(action_name: str) -> int:
+    try:
+        perm = ActionPermission.objects.get(action_name=action_name)
+        return ROLE_LEVELS.get(perm.min_role.lower(), 1)
+    except ActionPermission.DoesNotExist:
+        return 1
+
+def check_permission(user, page=None, action=None):
+    logger.info(f"[check_permission] Checking for user: {user}, role: {getattr(user, 'role', 'None')}, page: {page}, action: {action}")
+    user_level = get_user_role_level(user)
+    if not user.is_authenticated:
+        logger.warning("[check_permission] User not authenticated")
+        raise permissions.PermissionDenied("User not authenticated")
+    if page:
+        required = get_page_required_level(page)
+        if user_level < required:
+            logger.warning(f"[check_permission] Denied: page {page} requires level {required}, user has {user_level}")
+            raise permissions.PermissionDenied(f"Access denied: {page} requires role level {required}")
+    if action:
+        required = get_action_required_level(action)
+        if user_level < required:
+            logger.warning(f"[check_permission] Denied: action {action} requires level {required}, user has {user_level}")
+            raise permissions.PermissionDenied(f"Access denied: {action} requires role level {required}")
+    return True
+
 class SomeProtectedView(APIView):
     permission_classes = [IsAuthenticated, HasMinimumRole]
     required_role_level = 2
@@ -43,25 +108,40 @@ class MeView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         user = request.user
+        profile, _ = UserProfile.objects.get_or_create(user=user)
         return Response({
             "id": user.id,
             "email": user.email,
             "role": user.role,
-            "name": user.get_username() or user.email
+            "name": profile.full_name or user.name or user.email.split('@')[0]
         })
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super().as_view(**initkwargs)
+        return csrf_exempt(view)
 
 class UserProfileView(generics.RetrieveUpdateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = ProfileSerializer
     def get_object(self):
+        check_permission(self.request.user, page='user_profile')
         profile, created = UserProfile.objects.get_or_create(user=self.request.user)
         return profile
+    def perform_update(self, serializer):
+        logger.info(f"[UserProfileView] Validated data: {serializer.validated_data}")
+        profile = serializer.save()
+        full_name = serializer.validated_data.get('full_name')
+        if full_name:
+            self.request.user.name = full_name
+            self.request.user.full_name = full_name
+            self.request.user.save()
+            logger.info(f"[UserProfileView] Updated User.name and User.full_name to: {full_name}")
 
 class ProfilePictureUploadView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
     def post(self, request, *args, **kwargs):
         profile, created = UserProfile.objects.get_or_create(user=request.user)
@@ -153,7 +233,7 @@ class IsAdminRole(permissions.BasePermission):
 class PagePermissionViewSet(viewsets.ModelViewSet):
     queryset = PagePermission.objects.all()
     serializer_class = PagePermissionSerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+    permission_classes = [IsAuthenticated, IsAdminRole]
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
         if "min_role" not in data:
@@ -172,7 +252,7 @@ class PagePermissionViewSet(viewsets.ModelViewSet):
 class ActionPermissionViewSet(viewsets.ModelViewSet):
     queryset = ActionPermission.objects.all()
     serializer_class = ActionPermissionSerializer
-    permission_classes = [permissions.IsAuthenticated, IsAdminRole]
+    permission_classes = [IsAuthenticated, IsAdminRole]
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
         if "min_role" not in data:
@@ -213,7 +293,6 @@ def action_allowed(request, action_name: str):
     required_level = ROLE_LEVELS.get(action_perm.min_role.lower(), 999)
     return Response({"allowed": user_level >= required_level})
 
-# Ensure these views are included
 class ForgotPasswordView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
@@ -259,3 +338,155 @@ class ResetPasswordView(APIView):
             except (User.DoesNotExist, ValueError):
                 return Response({"detail": "Invalid user or token."}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+class UpdateLocationView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        latitude = request.data.get('latitude')
+        longitude = request.data.get('longitude')
+        if not latitude or not longitude:
+            return Response(
+                {'error': 'Latitude and longitude are required'},
+                status=400
+            )
+        try:
+            response = requests.get(
+                f'https://nominatim.openstreetmap.org/reverse?format=json&lat={latitude}&lon={longitude}',
+                headers={'User-Agent': 'KenyonLTD/1.0 (contact@kenyonltd.com)'}
+            )
+            response.raise_for_status()
+            data = response.json()
+            logger.info(f"[UpdateLocationView] Nominatim response: {data}")
+            state = data.get('address', {}).get('state', '') or data.get('address', {}).get('city', '')
+            normalized_state = state.replace(' State', '').strip()
+            matched_state = STATE_VARIATIONS.get(normalized_state, None) or STATE_VARIATIONS.get(state, None)
+            if not matched_state:
+                state_names = [short_name for short_name, _ in NIGERIAN_STATES]
+                result = process.extractOne(normalized_state, state_names, score_cutoff=60)
+                matched_state, score = result if result else ('Lagos', 0)
+            else:
+                score = 'exact'
+            profile, _ = UserProfile.objects.get_or_create(user=request.user)
+            profile.city = data.get('address', {}).get('city') or data.get('address', {}).get('town') or ''
+            profile.state = matched_state
+            profile.last_location_update = timezone.now()
+            profile.save()
+            logger.info(f"[UpdateLocationView] Updated location for user {request.user}: city={profile.city}, state={matched_state}, score={score}")
+            return Response({'city': profile.city, 'state': profile.state}, status=200)
+        except requests.RequestException as e:
+            logger.error(f"[UpdateLocationView] Failed to fetch location data: {str(e)}")
+            if response.status_code == 403:
+                logger.warning("[UpdateLocationView] Nominatim 403 Forbidden: Check User-Agent or rate limits")
+            return Response(
+                {'error': f'Failed to fetch location data: {str(e)}'},
+                status=500
+            )
+
+
+
+
+
+class ApiKeyViewSet(viewsets.ModelViewSet):
+    queryset = ApiKey.objects.all()
+    serializer_class = ApiKeySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        logger.debug(f"[ApiKeyViewSet] Fetching API keys for user: {self.request.user.email}")
+        return ApiKey.objects.filter(user=self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        logger.debug(f"[ApiKeyViewSet] User {request.user.email} attempting to generate API key. Role: {request.user.role}")
+        # Check permission
+        try:
+            action_perm = ActionPermission.objects.get(action_name='generate_api_key')
+            user_level = ROLE_LEVELS.get(request.user.role.lower(), 0)
+            required_level = ROLE_LEVELS.get(action_perm.min_role.lower(), 1)
+            logger.debug(f"[ApiKeyViewSet] User level: {user_level}, Required level: {required_level}")
+            if user_level < required_level:
+                logger.warning(f"[ApiKeyViewSet] Permission denied for user {request.user.email}: requires {action_perm.min_role}")
+                return Response(
+                    {"error": f"Permission denied: requires {action_perm.min_role} role"},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+        except ActionPermission.DoesNotExist:
+            logger.error(f"[ApiKeyViewSet] ActionPermission for 'generate_api_key' not found")
+            return Response(
+                {"error": "Action permission not configured for generate_api_key"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+        # Validate serializer
+        serializer = self.get_serializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except serializers.ValidationError as e:
+            logger.error(f"[ApiKeyViewSet] Serializer validation failed: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Create API key
+        try:
+            key = ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(43))
+            api_key = ApiKey.objects.create(
+                user=request.user,
+                name=serializer.validated_data.get('name', 'API Key'),
+                key=key,
+                created_by=request.user,
+                is_active=True,
+                is_viewed=False
+            )
+            logger.debug(f"[ApiKeyViewSet] Generated API key for user {request.user.email}: {api_key.name}")
+            return Response(
+                {"key": api_key.key, "name": api_key.name},
+                status=status.HTTP_201_CREATED
+            )
+        except Exception as e:
+            logger.error(f"[ApiKeyViewSet] Failed to create API key: {str(e)}")
+            return Response(
+                {"error": f"Failed to create API key: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    def destroy(self, request, *args, **kwargs):
+        logger.debug(f"[ApiKeyViewSet] User {request.user.email} attempting to delete API key")
+        try:
+            action_perm = ActionPermission.objects.get(action_name='delete_api_key')
+            user_level = ROLE_LEVELS.get(request.user.role.lower(), 0)
+            required_level = ROLE_LEVELS.get(action_perm.min_role.lower(), 1)
+            if user_level < required_level:
+                logger.warning(f"[ApiKeyViewSet] Permission denied for user {request.user.email}: requires {action_perm.min_role}")
+                return Response(
+                    {"error": f"Permission denied: requires {action_perm.min_role} role"},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+        except ActionPermission.DoesNotExist:
+            logger.error(f"[ApiKeyViewSet] ActionPermission for 'delete_api_key' not found")
+            return Response(
+                {"error": "Action permission not configured for delete_api_key"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+        return super().destroy(request, *args, **kwargs)
+
+    def retrieve(self, request, *args, **kwargs):
+        logger.debug(f"[ApiKeyViewSet] User {request.user.email} attempting to view API key")
+        try:
+            action_perm = ActionPermission.objects.get(action_name='view_api_key')
+            user_level = ROLE_LEVELS.get(request.user.role.lower(), 0)
+            required_level = ROLE_LEVELS.get(action_perm.min_role.lower(), 1)
+            if user_level < required_level:
+                logger.warning(f"[ApiKeyViewSet] Permission denied for user {request.user.email}: requires {action_perm.min_role}")
+                return Response(
+                    {"error": f"Permission denied: requires {action_perm.min_role} role"},
+                    status=status.HTTP_403_FORBIDDEN
+                )
+        except ActionPermission.DoesNotExist:
+            logger.error(f"[ApiKeyViewSet] ActionPermission for 'view_api_key' not found")
+            return Response(
+                {"error": "Action permission not configured for view_api_key"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+        return super().retrieve(request, *args, **kwargs)

@@ -2,6 +2,7 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 from django.conf import settings
+import secrets
 
 ROLE_LEVELS = {
     "staff": 1,
@@ -11,7 +12,31 @@ ROLE_LEVELS = {
     "admin": 5,
 }
 
-# Custom Manager
+class ApiKey(models.Model):
+    key = models.CharField(max_length=64, unique=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='api_keys')
+    name = models.CharField(max_length=100, blank=True, help_text="Descriptive name for the API key")
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='created_api_keys',
+        help_text="User who created this API key"
+    )
+    is_active = models.BooleanField(default=True)
+    is_viewed = models.BooleanField(default=False, help_text="True if key has been viewed")
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = secrets.token_urlsafe(32)  # Generates a 64-char secure key
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.name or 'API Key'} ({self.user.email})"
+
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, role='staff', **extra_fields):
         if not email:
@@ -27,7 +52,6 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         return self.create_user(email, password, role='admin', **extra_fields)
 
-# Role choices
 ROLE_CHOICES = (
     ('staff', 'Staff'),
     ('finance_manager', 'Finance Manager'),
@@ -36,7 +60,19 @@ ROLE_CHOICES = (
     ('admin', 'Admin'),
 )
 
-# Custom User
+NIGERIAN_STATES = (
+    ('Abia', 'Abia'), ('Adamawa', 'Adamawa'), ('Akwa Ibom', 'Akwa Ibom'), ('Anambra', 'Anambra'),
+    ('Bauchi', 'Bauchi'), ('Bayelsa', 'Bayelsa'), ('Benue', 'Benue'), ('Borno', 'Borno'),
+    ('Cross River', 'Cross River'), ('Delta', 'Delta'), ('Ebonyi', 'Ebonyi'), ('Edo', 'Edo'),
+    ('Ekiti', 'Ekiti'), ('Enugu', 'Enugu'), ('FCT', 'FCT'), ('Gombe', 'Gombe'),
+    ('Imo', 'Imo'), ('Jigawa', 'Jigawa'), ('Kaduna', 'Kaduna'), ('Kano', 'Kano'),
+    ('Katsina', 'Katsina'), ('Kebbi', 'Kebbi'), ('Kogi', 'Kogi'), ('Kwara', 'Kwara'),
+    ('Lagos', 'Lagos'), ('Nasarawa', 'Nasarawa'), ('Niger', 'Niger'), ('Ogun', 'Ogun'),
+    ('Ondo', 'Ondo'), ('Osun', 'Osun'), ('Oyo', 'Oyo'), ('Plateau', 'Plateau'),
+    ('Rivers', 'Rivers'), ('Sokoto', 'Sokoto'), ('Taraba', 'Taraba'), ('Yobe', 'Yobe'),
+    ('Zamfara', 'Zamfara'),
+)
+
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=255)
@@ -44,60 +80,65 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     full_name = models.CharField(max_length=100, blank=True)
-
     objects = UserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
-
     EMAIL_FIELD = 'email'
-
     def __str__(self):
         return self.email
 
-# Profile Image Upload Path
 def profile_image_upload_path(instance, filename):
     return f'profile_images/user_{instance.user.id}/{filename}'
 
-# User Profile model
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     full_name = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(upload_to=profile_image_upload_path, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, choices=NIGERIAN_STATES, default='Lagos')
+    last_location_update = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.full_name or self.user.email
 
-# Page-based permission
 class PagePermission(models.Model):
     page_name = models.CharField(max_length=100, unique=True)
     min_role = models.CharField(max_length=30, choices=ROLE_CHOICES, default='staff')
-
     def __str__(self):
         return f"Page: {self.page_name} requires {self.min_role}+"
 
-# Action-based permission
 class ActionPermission(models.Model):
     action_name = models.CharField(max_length=100, unique=True)
     min_role = models.CharField(max_length=30, choices=ROLE_CHOICES, default='staff')
-
     def __str__(self):
         return f"Action: {self.action_name} requires {self.min_role}+"
 
-# App-specific permission lists with role mappings
 PERMISSION_ROLES = {
     'default': 'staff',
     'product_documentation': 'finance_manager',
     'delete_product_inflow': 'admin',
     'delete_product_outflow': 'admin',
-    'warehouse': 'finance_manager',  # Added for warehouse app
+    'warehouse': 'finance_manager',
+    'update_location': 'staff',
 }
 
-INVENTORY_PAGES = ['inventory_metrics', 'storage_bins', 'expired_items', 'items', 'stock_records', 'expiry_tracked_items']
+INVENTORY_PAGES = [
+    'inventory_metrics',
+    'storage_bins',
+    'expired_items',
+    'items',
+    'stock_records',
+    'expiry_tracked_items',
+    'aisle_rack_dashboard',  # Added
+]
+
 INVENTORY_ACTIONS = [
     'create_storage_bin', 'create_item', 'create_stock_record', 'create_expiry_tracked_item',
     'update_storage_bin', 'update_item', 'update_stock_record', 'update_expiry_tracked_item',
-    'delete_item', 'delete_storage_bin', 'delete_stock_record', 'delete_expiry_tracked_item'
+    'delete_item', 'delete_storage_bin', 'delete_stock_record', 'delete_expiry_tracked_item',
+     'generate_api_key',  # Added
+    'view_api_key',      # Added
+    'delete_api_key'
 ]
 
 PROCUREMENT_PAGES = [
@@ -113,7 +154,12 @@ PROCUREMENT_ACTIONS = [
 ]
 
 RECEIPT_PAGES = ["receipt_archive", "stock_receipts", "signing_receipts"]
-RECEIPT_ACTIONS = ["create_receipt", "create_stock_receipt", "create_signing_receipt"]
+RECEIPT_ACTIONS = [
+    "create_receipt", "create_stock_receipt", "create_signing_receipt",
+    "update_receipt", "delete_receipt",  # Added
+    "update_stock_receipt", "delete_stock_receipt",  # Added
+    "update_signing_receipt", "delete_signing_receipt"  # Added
+]
 
 FINANCE_PAGES = ["finance_categories", "finance_transactions", "finance_overview"]
 FINANCE_ACTIONS = [
@@ -134,8 +180,14 @@ PRODUCT_DOCUMENTATION_ACTIONS = [
     "create_product_outflow", "update_product_outflow", "delete_product_outflow",
 ]
 
+RENTALS_ACTIONS = [
+    "create_rental", "update_rental", "delete_rental",
+    "create_equipment", "update_equipment", "delete_equipment",
+    "create_payment", "update_payment", "delete_payment"
+]
+
 WAREHOUSE_PAGES = ['warehouse']
-WAREHOUSE_ACTIONS = ['create_warehouse_item', 'update_warehouse_item', 'delete_warehouse_item']
+WAREHOUSE_ACTIONS = ['create_warehouse_item', 'update_warehouse_item', 'delete_warehouse_item', 'update_location']
 
 ALL_PAGES = (
     INVENTORY_PAGES + PROCUREMENT_PAGES + RECEIPT_PAGES + FINANCE_PAGES +

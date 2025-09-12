@@ -1,6 +1,11 @@
 # accounts/permissions.py
 from rest_framework.permissions import BasePermission
 from .models import PagePermission, ActionPermission
+from rest_framework import permissions
+from django.conf import settings
+from .models import ApiKey
+
+
 
 ROLE_LEVELS = {
     'staff': 1,
@@ -9,6 +14,19 @@ ROLE_LEVELS = {
     'md': 4,
     'admin': 5,
 }
+
+
+
+
+class APIKeyPermission(BasePermission):
+    def has_permission(self, request, view):
+        api_key = request.headers.get('X-API-Key')
+        return api_key and ApiKey.objects.filter(key=api_key, is_active=True).exists()
+
+
+
+
+
 
 class HasMinimumRole(BasePermission):
     """

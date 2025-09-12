@@ -45,14 +45,13 @@ class ProductInflowSerializer(serializers.ModelSerializer):
         input_serial_numbers = validated_data.pop('input_serial_numbers', None)
         instance = super().update(instance, validated_data)
         if input_serial_numbers is not None:
-            # Delete existing serial numbers and create new ones
             instance.serial_numbers.all().delete()
             for serial in input_serial_numbers:
                 ProductSerialNumber.objects.create(inflow=instance, serial_number=serial)
         return instance
 
 class ProductOutflowSerializer(serializers.ModelSerializer):
-    product = serializers.PrimaryKeyRelatedField(queryset=ProductInflow.objects.all())
+    product = ProductInflowSerializer(read_only=True)  # Changed to nested serializer
     responsible_staff = serializers.StringRelatedField()
     serial_numbers = ProductSerialNumberSerializer(many=True, read_only=True)
     input_serial_numbers = serializers.ListField(

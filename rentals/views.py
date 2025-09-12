@@ -1,45 +1,100 @@
-# rentals/views.py
-from django.shortcuts import render
-from rest_framework import viewsets, permissions
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 from .models import Equipment, Rental, RentalPayment
 from .serializers import EquipmentSerializer, RentalSerializer, RentalPaymentSerializer
 from accounts.permissions import DynamicPermission
 
-class EquipmentViewSet(viewsets.ModelViewSet):
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+class EquipmentViewSet(ModelViewSet):
     queryset = Equipment.objects.all()
     serializer_class = EquipmentSerializer
-    permission_classes = [permissions.IsAuthenticated, DynamicPermission]
+    permission_classes = [IsAuthenticated, DynamicPermission]
     page_permission_name = 'rentals_equipment'
-    # POST checks 'create_equipment' via DynamicPermission.CREATE_ACTIONS
+    required_permissions = {
+        'create': 'create_equipment',
+        'update': 'update_equipment',
+        'partial_update': 'update_equipment',
+        'destroy': 'delete_equipment',
+    }
+    pagination_class = StandardResultsSetPagination
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context.update({'request': self.request})
-        return context
-
-class RentalViewSet(viewsets.ModelViewSet):
-    queryset = Rental.objects.select_related('renter', 'equipment').all()
-    serializer_class = RentalSerializer
-    permission_classes = [permissions.IsAuthenticated, DynamicPermission]
-    page_permission_name = 'rentals_active'
-    # POST checks 'create_rental' via DynamicPermission.CREATE_ACTIONS
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context.update({'request': self.request})  # Ensure serializer sees request.user
-        return context
+    def get_queryset(self):
+        queryset = Equipment.objects.filter(created_by=self.request.user)
+        search = self.request.query_params.get('search', None)
+        if search:
+            queryset = queryset.filter(Q(name__icontains=search) | Q(category__icontains=search) | Q(location__icontains=search))
+        return queryset.order_by('-created_at')
 
     def perform_create(self, serializer):
-        serializer.save(renter=self.request.user)  # Set renter to current user
+        serializer.save(created_by=self.request.user)
 
-class RentalPaymentViewSet(viewsets.ModelViewSet):
+    def perform_update(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+class RentalViewSet(ModelViewSet):
+    queryset = Rental.objects.select_related('renter', 'equipment').all()
+    serializer_class = RentalSerializer
+    permission_classes = [IsAuthenticated, DynamicPermission]
+    page_permission_name = 'rentals_active'
+    required_permissions = {
+        'create': 'create_rental',
+        'update': 'update_rental',
+        'partial_update': 'update_rental',
+        'destroy': 'delete_rental',
+    }
+    pagination_class = StandardResultsSetPagination
+
+    def get_queryset(self):
+        queryset = Rental.objects.filter(created_by=self.request.user).select_related('renter', 'equipment')
+        search = self.request.query_params.get('search', None)
+        if search:
+            queryset = queryset.filter(
+                Q(renter__full_name__icontains=search) | Q(equipment__name__icontains=search) | Q(code__icontains=search)
+            )
+        return queryset.order_by('-created_at')
+
+    def perform_create(self, serializer):
+        try:
+            serializer.save(renter=self.request.user, created_by=self.request.user)
+        except Exception as e:
+            logger.error(f"Error creating rental: {str(e)}")
+            raise
+
+    def perform_update(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+        
+
+class RentalPaymentViewSet(ModelViewSet):
     queryset = RentalPayment.objects.select_related('rental__renter', 'rental__equipment').all()
     serializer_class = RentalPaymentSerializer
-    permission_classes = [permissions.IsAuthenticated, DynamicPermission]
+    permission_classes = [IsAuthenticated, DynamicPermission]
     page_permission_name = 'rentals_payments'
-    # POST checks 'create_payment' via DynamicPermission.CREATE_ACTIONS
+    required_permissions = {
+        'create': 'create_payment',
+        'update': 'update_payment',
+        'partial_update': 'update_payment',
+        'destroy': 'delete_payment',
+    }
+    pagination_class = StandardResultsSetPagination
 
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context.update({'request': self.request})
-        return context
+    def get_queryset(self):
+        queryset = RentalPayment.objects.filter(created_by=self.request.user).select_related('rental__renter', 'rental__equipment')
+        search = self.request.query_params.get('search', None)
+        if search:
+            queryset = queryset.filter(
+                Q(rental__renter__full_name__icontains=search) | Q(rental__equipment__name__icontains=search)
+            )
+        return queryset.order_by('-created_at')
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(created_by=self.request.user)

@@ -84,12 +84,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOW_CREDENTIALS = True  # Allow cookies
-CSRF_COOKIE_HTTPONLY = False   # Allow JavaScript to read CSRF token
-CSRF_COOKIE_SECURE = True      # Must be True in production (HTTPS)
-SESSION_COOKIE_SECURE = True   # Also secure sessions
 
+
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 AUTH_USER_MODEL = 'accounts.User'
 
 CORS_ALLOWED_ORIGINS = [
@@ -107,10 +108,19 @@ CSRF_TRUSTED_ORIGINS = [
     "https://scm.kenyon-international.com",
 ]
 
-FRONTEND_URL = "https://scm.kenyon-international.com"  # or "https://gray-bay-08d8d431e.1.azurestaticapps.net" for local testing
-MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/jt8l5h53qqhpxfmb8iogerggheif47u3"  # Replace with Make webhook URL after Step 2
+CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+CORS_ALLOW_HEADERS = ['content-type', 'authorization', 'x-api-key', 'x-csrftoken']
+
+
+
+
+FRONTEND_URL = "https://scm.kenyon-international.com"
+MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/jt8l5h53qqhpxfmb8iogerggheif47u3"
 
 ROOT_URLCONF = 'backend.urls'
+
+
+#IOT_API_KEY = 'your-secret-iot-api-key-123456'  # Generate a secure key
 
 TEMPLATES = [
     {
@@ -192,4 +202,23 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
