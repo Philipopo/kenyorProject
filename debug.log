@@ -186,3 +186,26 @@ Watching for file changes with StatReloader
 [LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
 [LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
 IoT event processed: item_added at AA1-RR02-S44 for laptop
+Watching for file changes with StatReloader
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/auth/permissions/page/aisle_rack_dashboard/
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/auth/permissions/page/aisle_rack_dashboard/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Unauthorized: /api/auth/profile/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Unauthorized: /api/auth/profile/
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.060352&lon=7.4481664 HTTP/1.1" 200 657
+[UpdateLocationView] Nominatim response: {'place_id': 35922917, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 172163062, 'lat': '9.0607003', 'lon': '7.4481881', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.053399514000152554, 'addresstype': 'road', 'name': '', 'display_name': 'Utako, Abuja, Municipal Area Council, Federal Capital Territory, 900285, Nigeria', 'address': {'suburb': 'Utako', 'city': 'Abuja', 'county': 'Municipal Area Council', 'state': 'Federal Capital Territory', 'ISO3166-2-lvl4': 'NG-FC', 'postcode': '900285', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['9.0606967', '9.0646298', '7.4454259', '7.4522080']}
+[UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=Abuja, state=FCT, score=exact
+https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.060352&lon=7.4481664 HTTP/1.1" 200 657
+[UpdateLocationView] Nominatim response: {'place_id': 35922917, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 172163062, 'lat': '9.0607003', 'lon': '7.4481881', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.053399514000152554, 'addresstype': 'road', 'name': '', 'display_name': 'Utako, Abuja, Municipal Area Council, Federal Capital Territory, 900285, Nigeria', 'address': {'suburb': 'Utako', 'city': 'Abuja', 'county': 'Municipal Area Council', 'state': 'Federal Capital Territory', 'ISO3166-2-lvl4': 'NG-FC', 'postcode': '900285', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['9.0606967', '9.0646298', '7.4454259', '7.4522080']}
+[UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=Abuja, state=FCT, score=exact
