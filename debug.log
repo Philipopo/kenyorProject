@@ -209,3 +209,65 @@ https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.060352&l
 https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.060352&lon=7.4481664 HTTP/1.1" 200 657
 [UpdateLocationView] Nominatim response: {'place_id': 35922917, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 172163062, 'lat': '9.0607003', 'lon': '7.4481881', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.053399514000152554, 'addresstype': 'road', 'name': '', 'display_name': 'Utako, Abuja, Municipal Area Council, Federal Capital Territory, 900285, Nigeria', 'address': {'suburb': 'Utako', 'city': 'Abuja', 'county': 'Municipal Area Council', 'state': 'Federal Capital Territory', 'ISO3166-2-lvl4': 'NG-FC', 'postcode': '900285', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['9.0606967', '9.0646298', '7.4454259', '7.4522080']}
 [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=Abuja, state=FCT, score=exact
+Watching for file changes with StatReloader
+[APIKeyPermission] Invalid or inactive API key
+[APIKeyPermission] Invalid or inactive API key
+[APIKeyPermission] Invalid or inactive API key
+[APIKeyPermission] Invalid or inactive API key
+Unauthorized: /api/inventory/iot-event/
+Not Found: /favicon.ico
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/inventory/metrics/
+Unauthorized: /api/auth/update_location/
+Unauthorized: /api/auth/update_location/
+Unauthorized: /api/auth/profile/
+Unauthorized: /api/inventory/metrics/
+Unauthorized: /api/auth/profile/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+Unauthorized: /api/auth/profile/
+Not Found: /api/token/refresh/
+Not Found: /api/token/refresh/
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+[check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.0570752&lon=7.4514432 HTTP/1.1" 200 655
+[UpdateLocationView] Nominatim response: {'place_id': 35742701, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 739948548, 'lat': '9.0570456', 'lon': '7.4513526', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.053399514000152554, 'addresstype': 'road', 'name': '', 'display_name': 'Wuye, Abuja, Municipal Area Council, Federal Capital Territory, 900285, Nigeria', 'address': {'suburb': 'Wuye', 'city': 'Abuja', 'county': 'Municipal Area Council', 'state': 'Federal Capital Territory', 'ISO3166-2-lvl4': 'NG-FC', 'postcode': '900285', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['9.0557925', '9.0574994', '7.4493702', '7.4515622']}
+[UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=Abuja, state=FCT, score=exact
+https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=9.0570752&lon=7.4514432 HTTP/1.1" 200 655
+[UpdateLocationView] Nominatim response: {'place_id': 35742701, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 739948548, 'lat': '9.0570456', 'lon': '7.4513526', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.053399514000152554, 'addresstype': 'road', 'name': '', 'display_name': 'Wuye, Abuja, Municipal Area Council, Federal Capital Territory, 900285, Nigeria', 'address': {'suburb': 'Wuye', 'city': 'Abuja', 'county': 'Municipal Area Council', 'state': 'Federal Capital Territory', 'ISO3166-2-lvl4': 'NG-FC', 'postcode': '900285', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['9.0557925', '9.0574994', '7.4493702', '7.4515622']}
+[UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=Abuja, state=FCT, score=exact
+[ApiKeyViewSet] Fetching API keys for user: philipboluwatife0@gmail.com
+[ApiKeyViewSet] Fetching API keys for user: philipboluwatife0@gmail.com
+[ApiKeyViewSet] User philipboluwatife0@gmail.com attempting to generate API key. Role: admin
+[ApiKeyViewSet] User level: 5, Required level: 5
+[ApiKeyViewSet] Generated API key for user philipboluwatife0@gmail.com: kenyon new
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\accounts\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'timestamp': ['2025-09-12T08:00:00Z']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'ajs_anonymous_id=%22d746234d-dadb-475e-87e5-545758ab0498%22; csrftoken=g3CDW92j53WZejOjEkJxLYPto8SMF7iX; sessionid=yw07yq6mk26pwhfuus3mc3lcrxkl3mqo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating event: item_added
+[LocationEventSerializer] Validating data: {'location': <StorageBin: AA1-RR02-S44 (A1-R02)>, 'item_name': <Item: laptop>, 'event': 'item_added', 'timestamp': datetime.datetime(2025, 9, 12, 8, 0, tzinfo=zoneinfo.ZoneInfo(key='UTC'))}
+[LocationEventSerializer] Validating item_name: laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
+[LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
+IoT event processed via GET: item_added at AA1-RR02-S44 for laptop
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'timestamp': ['2025-09-12T08:00:00Z']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'ajs_anonymous_id=%22d746234d-dadb-475e-87e5-545758ab0498%22; csrftoken=g3CDW92j53WZejOjEkJxLYPto8SMF7iX; sessionid=yw07yq6mk26pwhfuus3mc3lcrxkl3mqo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'timestamp': ['2025-09-12T08:00:00Z']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'ajs_anonymous_id=%22d746234d-dadb-475e-87e5-545758ab0498%22; csrftoken=g3CDW92j53WZejOjEkJxLYPto8SMF7iX; sessionid=yw07yq6mk26pwhfuus3mc3lcrxkl3mqo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'timestamp': ['2025-09-12T08:00:00Z']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'ajs_anonymous_id=%22d746234d-dadb-475e-87e5-545758ab0498%22; csrftoken=g3CDW92j53WZejOjEkJxLYPto8SMF7iX; sessionid=yw07yq6mk26pwhfuus3mc3lcrxkl3mqo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...

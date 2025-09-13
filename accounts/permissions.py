@@ -4,6 +4,30 @@ from .models import PagePermission, ActionPermission
 from rest_framework import permissions
 from django.conf import settings
 from .models import ApiKey
+import logging
+
+logger = logging.getLogger(__name__)
+
+class APIKeyPermission(permissions.BasePermission):
+    def has_permission(self, request, view):
+        # Log the request method and parameters for debugging
+        logger.debug(f"[APIKeyPermission] Request method: {request.method}, Query params: {request.query_params}, Headers: {request.headers}")
+        # Check query parameter first (for GET requests)
+        api_key = request.query_params.get('api_key')
+        if not api_key:
+            # Fallback to header (for POST requests)
+            api_key = request.headers.get('X-API-Key')
+        if not api_key:
+            logger.warning("[APIKeyPermission] No API key provided in query params or headers")
+            return False
+        try:
+            api_key_obj = ApiKey.objects.get(key=api_key, is_active=True)
+            logger.info(f"[APIKeyPermission] Valid API key found for user: {api_key_obj.user.email}, key: {api_key[:8]}...")
+            return True
+        except ApiKey.DoesNotExist:
+            logger.error(f"[APIKeyPermission] Invalid or inactive API key: {api_key[:8]}...")
+            return False
+
 
 
 
@@ -14,17 +38,6 @@ ROLE_LEVELS = {
     'md': 4,
     'admin': 5,
 }
-
-
-
-
-class APIKeyPermission(BasePermission):
-    def has_permission(self, request, view):
-        api_key = request.headers.get('X-API-Key')
-        return api_key and ApiKey.objects.filter(key=api_key, is_active=True).exists()
-
-
-
 
 
 
