@@ -70,6 +70,7 @@ class LocationEvent(models.Model):
     timestamp = models.DateTimeField()
     processed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    quantity = models.IntegerField(default=1)  # New field
 
     def __str__(self):
         return f"{self.storage_bin.bin_id} - {self.item.name} - {self.event} at {self.timestamp}"

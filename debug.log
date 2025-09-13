@@ -271,3 +271,276 @@ IoT event processed via GET: item_added at AA1-RR02-S44 for laptop
 [APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
 [APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'timestamp': ['2025-09-12T08:00:00Z']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': '127.0.0.1:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'ajs_anonymous_id=%22d746234d-dadb-475e-87e5-545758ab0498%22; csrftoken=g3CDW92j53WZejOjEkJxLYPto8SMF7iX; sessionid=yw07yq6mk26pwhfuus3mc3lcrxkl3mqo'}
 [APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+Internal Server Error: /api/inventory/iot-event/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\views.py", line 213, in get
+    if not serializer.is_valid():
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 444, in run_validation
+    value = self.to_internal_value(data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 503, in to_internal_value
+    validated_value = validate_method(validated_value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py", line 89, in validate_timestamp
+    parsed = datetime.strptime(value, '%d/%m/%Y %H:%M:%S')
+             ^^^^^^^^
+NameError: name 'datetime' is not defined. Did you forget to import 'datetime'?
+Not Found: /favicon.ico
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+Internal Server Error: /api/inventory/iot-event/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\views.py", line 213, in get
+    if not serializer.is_valid():
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 444, in run_validation
+    value = self.to_internal_value(data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 503, in to_internal_value
+    validated_value = validate_method(validated_value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py", line 105, in validate_timestamp
+    return timezone.make_aware(parsed)
+           ^^^^^^^^
+NameError: name 'timezone' is not defined
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+Internal Server Error: /api/inventory/iot-event/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\views.py", line 213, in get
+    if not serializer.is_valid():
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 444, in run_validation
+    value = self.to_internal_value(data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 503, in to_internal_value
+    validated_value = validate_method(validated_value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py", line 105, in validate_timestamp
+    return timezone.make_aware(parsed)
+           ^^^^^^^^
+NameError: name 'timezone' is not defined
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+[IoTEventView] Invalid IoT event payload for GET: {'event': [ErrorDetail(string='"item Added" is not a valid choice.', code='invalid_choice')]}
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item Added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+Bad Request: /api/inventory/iot-event/
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating event: item_added
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+[LocationEventSerializer] Validating data: {'location': <StorageBin: AA1-RR02-S44 (A1-R02)>, 'item_name': <Item: laptop>, 'event': 'item_added', 'quantity': 5, 'timestamp': datetime.datetime(2025, 9, 13, 17, 33, 23, tzinfo=zoneinfo.ZoneInfo(key='UTC'))}
+[LocationEventSerializer] Validating item_name: laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
+[LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
+[IoTEventView] Error processing IoT event via GET: LocationEvent() got unexpected keyword arguments: 'quantity'
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+Internal Server Error: /api/inventory/iot-event/
+C:\Users\USER\Documents\Edmoss\kenyorProject\backend\inventory\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating event: item_added
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+[LocationEventSerializer] Validating data: {'location': <StorageBin: AA1-RR02-S44 (A1-R02)>, 'item_name': <Item: laptop>, 'event': 'item_added', 'quantity': 5, 'timestamp': datetime.datetime(2025, 9, 13, 17, 33, 23, tzinfo=zoneinfo.ZoneInfo(key='UTC'))}
+[LocationEventSerializer] Validating item_name: laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
+[LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
+[IoTEventView] Error processing IoT event via GET: table inventory_locationevent has no column named quantity
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+Internal Server Error: /api/inventory/iot-event/
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating event: item_added
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+[LocationEventSerializer] Validating data: {'location': <StorageBin: AA1-RR02-S44 (A1-R02)>, 'item_name': <Item: laptop>, 'event': 'item_added', 'quantity': 5, 'timestamp': datetime.datetime(2025, 9, 13, 17, 33, 23, tzinfo=zoneinfo.ZoneInfo(key='UTC'))}
+[LocationEventSerializer] Validating item_name: laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
+[LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
+[IoTEventView] Error processing IoT event via GET: table inventory_locationevent has no column named quantity
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+Internal Server Error: /api/inventory/iot-event/
+Watching for file changes with StatReloader
+[APIKeyPermission] Request method: GET, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[IoTEventView] Processing GET request with query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>
+[LocationEventSerializer] Validating location: value=A1-R02, type=<class 'str'>
+[LocationEventSerializer] Normalized location: A1-R02
+[LocationEventSerializer] Split location: row=A1, rack=R02
+[LocationEventSerializer] Found StorageBin: AA1-RR02-S44
+[LocationEventSerializer] Validating item_name: Laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating event: item_added
+[LocationEventSerializer] Validating timestamp: 13/09/2025 17:33:23
+[LocationEventSerializer] Validating data: {'location': <StorageBin: AA1-RR02-S44 (A1-R02)>, 'item_name': <Item: laptop>, 'event': 'item_added', 'quantity': 5, 'timestamp': datetime.datetime(2025, 9, 13, 17, 33, 23, tzinfo=zoneinfo.ZoneInfo(key='UTC'))}
+[LocationEventSerializer] Validating item_name: laptop
+[LocationEventSerializer] Found Item: laptop
+[LocationEventSerializer] Validating location: value=AA1-RR02-S44 (A1-R02), type=<class 'inventory.models.StorageBin'>
+[LocationEventSerializer] Received StorageBin: AA1-RR02-S44, returning as is
+[IoTEventView] IoT event processed via GET: item_added at AA1-RR02-S44 for laptop, quantity: 5
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: POST, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...
+[APIKeyPermission] Request method: OPTIONS, Query params: <QueryDict: {'api_key': ['kNKR1cJ7oBCPmoQsz0Ubv8ynkCGZv7m1Rb7pul5isY5'], 'location': ['A1-R02'], 'item_name': ['Laptop'], 'event': ['item_added'], 'quantity': ['5'], 'timestamp': ['13/09/2025 17:33:23']}>, Headers: {'Content-Length': '', 'Content-Type': 'text/plain', 'Host': 'localhost:8000', 'Connection': 'keep-alive', 'Cache-Control': 'max-age=0', 'Sec-Ch-Ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"', 'Sec-Ch-Ua-Mobile': '?0', 'Sec-Ch-Ua-Platform': '"Windows"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br, zstd', 'Accept-Language': 'en-US,en;q=0.9', 'Cookie': 'csrftoken=9Bn1u0LDlwrgpFWXq0Za85ij6JTBuswo'}
+[APIKeyPermission] Valid API key found for user: philipboluwatife0@gmail.com, key: kNKR1cJ7...

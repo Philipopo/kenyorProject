@@ -199,143 +199,137 @@ class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
 
 
 class IoTEventView(APIView):
-    permission_classes = [APIKeyPermission]  # Use API key auth
-
+    permission_classes = [APIKeyPermission]
     def get(self, request):
-        # Extract query parameters
+        logger.debug(f"[IoTEventView] Processing GET request with query params: {request.query_params}")
         data = {
             'location': request.query_params.get('location'),
             'item_name': request.query_params.get('item_name'),
             'event': request.query_params.get('event'),
+            'quantity': request.query_params.get('quantity'),
             'timestamp': request.query_params.get('timestamp')
         }
         serializer = LocationEventSerializer(data=data)
         if not serializer.is_valid():
-            logger.error(f"Invalid IoT event payload for GET: {serializer.errors}")
+            logger.error(f"[IoTEventView] Invalid IoT event payload for GET: {serializer.errors}")
             return Response(serializer.errors, status=400)
-
         storage_bin = serializer.validated_data['storage_bin']
         item = serializer.validated_data['item']
         event = serializer.validated_data['event']
+        quantity = serializer.validated_data['quantity']
         timestamp = serializer.validated_data.get('timestamp', timezone.now())
-
         try:
             with transaction.atomic():
-                # Log the event
                 event_obj = LocationEvent.objects.create(
                     storage_bin=storage_bin,
                     item=item,
                     event=event,
+                    quantity=quantity,
                     timestamp=timestamp,
                     processed=True
                 )
-
-                # Update Item.quantity and create StockRecord
                 if event == 'item_added':
-                    item.quantity += 1
+                    item.quantity += quantity
                     item.save()
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
                         category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=1,
+                        quantity=quantity,
                         critical=False,
-                        user=None  # IoT events don't have a user
+                        user=None
                     )
-                    storage_bin.used += 1
+                    storage_bin.used += quantity
                     storage_bin.save()
                 elif event == 'item_removed':
-                    if item.quantity <= 0:
-                        logger.warning(f"Cannot remove item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
-                        return Response({"error": f"Cannot remove item: {item.name} has quantity {item.quantity}"}, status=400)
-                    item.quantity -= 1
+                    if item.quantity < quantity:
+                        logger.warning(f"[IoTEventView] Cannot remove {quantity} of item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
+                        return Response({"error": f"Cannot remove {quantity} of item: {item.name} has quantity {item.quantity}"}, status=400)
+                    item.quantity -= quantity
                     item.save()
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
                         category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=-1,
+                        quantity=-quantity,
                         critical=(item.quantity <= 0),
                         user=None
                     )
-                    storage_bin.used = max(0, storage_bin.used - 1)
+                    storage_bin.used = max(0, storage_bin.used - quantity)
                     storage_bin.save()
-
-            logger.info(f"IoT event processed via GET: {event} at {storage_bin.bin_id} for {item.name}")
+            logger.info(f"[IoTEventView] IoT event processed via GET: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
             return Response({
                 "message": "Event processed successfully",
                 "event_id": event_obj.id,
                 "location": f"{storage_bin.row}-{storage_bin.rack}",
-                "item": item.name
+                "item": item.name,
+                "quantity": quantity
             }, status=200)
         except Exception as e:
-            logger.error(f"Error processing IoT event via GET: {str(e)}")
+            logger.error(f"[IoTEventView] Error processing IoT event via GET: {str(e)}")
             return Response({"error": str(e)}, status=500)
-
     def post(self, request):
+        logger.debug(f"[IoTEventView] Processing POST request with data: {request.data}")
         serializer = LocationEventSerializer(data=request.data)
         if not serializer.is_valid():
-            logger.error(f"Invalid IoT event payload: {serializer.errors}")
+            logger.error(f"[IoTEventView] Invalid IoT event payload for POST: {serializer.errors}")
             return Response(serializer.errors, status=400)
-
         storage_bin = serializer.validated_data['storage_bin']
         item = serializer.validated_data['item']
         event = serializer.validated_data['event']
+        quantity = serializer.validated_data['quantity']
         timestamp = serializer.validated_data.get('timestamp', timezone.now())
-
         try:
             with transaction.atomic():
-                # Log the event
                 event_obj = LocationEvent.objects.create(
                     storage_bin=storage_bin,
                     item=item,
                     event=event,
+                    quantity=quantity,
                     timestamp=timestamp,
                     processed=True
                 )
-
-                # Update Item.quantity and create StockRecord
                 if event == 'item_added':
-                    item.quantity += 1
+                    item.quantity += quantity
                     item.save()
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
                         category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=1,
+                        quantity=quantity,
                         critical=False,
-                        user=None  # IoT events don't have a user
+                        user=None
                     )
-                    storage_bin.used += 1
+                    storage_bin.used += quantity
                     storage_bin.save()
                 elif event == 'item_removed':
-                    if item.quantity <= 0:
-                        logger.warning(f"Cannot remove item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
-                        return Response({"error": f"Cannot remove item: {item.name} has quantity {item.quantity}"}, status=400)
-                    item.quantity -= 1
+                    if item.quantity < quantity:
+                        logger.warning(f"[IoTEventView] Cannot remove {quantity} of item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
+                        return Response({"error": f"Cannot remove {quantity} of item: {item.name} has quantity {item.quantity}"}, status=400)
+                    item.quantity -= quantity
                     item.save()
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
                         category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=-1,
+                        quantity=-quantity,
                         critical=(item.quantity <= 0),
                         user=None
                     )
-                    storage_bin.used = max(0, storage_bin.used - 1)
+                    storage_bin.used = max(0, storage_bin.used - quantity)
                     storage_bin.save()
-
-            logger.info(f"IoT event processed: {event} at {storage_bin.bin_id} for {item.name}")
+            logger.info(f"[IoTEventView] IoT event processed via POST: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
             return Response({
                 "message": "Event processed successfully",
                 "event_id": event_obj.id,
                 "location": f"{storage_bin.row}-{storage_bin.rack}",
-                "item": item.name
+                "item": item.name,
+                "quantity": quantity
             }, status=200)
         except Exception as e:
-            logger.error(f"Error processing IoT event: {str(e)}")
+            logger.error(f"[IoTEventView] Error processing IoT event via POST: {str(e)}")
             return Response({"error": str(e)}, status=500)
