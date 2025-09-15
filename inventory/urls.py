@@ -7,7 +7,7 @@ from .views import (
     ExpiryTrackedItemViewSet,
     ExpiredItemListView,
     InventoryMetricsView,
-    IoTEventView,  # Add import
+    IoTEventView,
 )
 
 router = DefaultRouter()
@@ -20,5 +20,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('expiries/', ExpiredItemListView.as_view()),
     path('metrics/', InventoryMetricsView.as_view(), name='inventory-metrics'),
-    path('iot-event/', IoTEventView.as_view(), name='iot-event'),  # New endpoint
+    path('iot-event/', IoTEventView.as_view(), name='iot-event'),
 ]

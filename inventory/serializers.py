@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.utils import timezone  # Add this import
+from django.utils import timezone
 from rest_framework import serializers
 from .models import StorageBin, Item, StockRecord, LocationEvent, ExpiryTrackedItem
 import logging
@@ -10,22 +10,25 @@ class StorageBinSerializer(serializers.ModelSerializer):
     class Meta:
         model = StorageBin
         fields = ['id', 'bin_id', 'row', 'rack', 'shelf', 'type', 'capacity', 'used', 'description', 'user']
-        read_only_fields = ['user']
+        read_only_fields = ['user', 'used']
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['id', 'name', 'quantity', 'part_number', 'manufacturer', 'contact', 'batch', 'expiry_date', 'custom_fields', 'user']
+        fields = ['id', 'name', 'quantity', 'part_number', 'manufacturer', 'contact', 'batch', 'expiry_date', 'custom_fields', 'user', 'created_at']
         read_only_fields = ['user']
 
 class StockRecordSerializer(serializers.ModelSerializer):
     item_name = serializers.CharField(source='item.name', read_only=True)
     storage_bin_id = serializers.CharField(source='storage_bin.bin_id', read_only=True, allow_null=True)
+    item = ItemSerializer(read_only=True)  # Add nested ItemSerializer
+
     class Meta:
         model = StockRecord
-        fields = ['id', 'item', 'item_name', 'storage_bin', 'storage_bin_id', 'category', 'location', 'quantity', 'critical', 'user', 'created_at']
+        fields = ['id', 'item', 'item_name', 'storage_bin', 'storage_bin_id', 'location', 'quantity', 'critical', 'user', 'created_at']
         read_only_fields = ['user', 'item_name', 'storage_bin_id', 'created_at']
 
+        
 class LocationEventSerializer(serializers.ModelSerializer):
     location = serializers.CharField(write_only=True)
     item_name = serializers.CharField(write_only=True)

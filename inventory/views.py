@@ -10,16 +10,8 @@ from django.db import transaction
 from django.utils import timezone
 import logging
 
-from .models import StorageBin, Item, StockRecord, ExpiryTrackedItem, LocationEvent
-from .serializers import (
-    StorageBinSerializer,
-    ItemSerializer,
-    StockRecordSerializer,
-    ExpiryTrackedItemSerializer,
-    LocationEventSerializer,
-)
-from accounts.models import PagePermission, ActionPermission
-from accounts.permissions import APIKeyPermission  # Add import
+from .serializers import StorageBinSerializer, ItemSerializer, StockRecordSerializer, ExpiryTrackedItemSerializer, LocationEventSerializer
+from accounts.permissions import APIKeyPermission  # Added missing import
 
 logger = logging.getLogger(__name__)
 
@@ -35,12 +27,14 @@ def get_user_role_level(user):
     return ROLE_LEVELS.get(user.role, 0)
 
 def get_page_required_level(page):
+    from accounts.models import PagePermission
     perm = PagePermission.objects.filter(page_name=page).first()
     if not perm:
         return 1
     return ROLE_LEVELS.get(perm.min_role, 1)
 
 def get_action_required_level(action_name: str) -> int:
+    from accounts.models import ActionPermission
     try:
         perm = ActionPermission.objects.get(action_name=action_name)
         return ROLE_LEVELS.get(perm.min_role, 1)
@@ -67,13 +61,20 @@ class InventoryMetricsView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
+        from .models import Item, StockRecord, StorageBin
         check_permission(request.user, page="inventory_metrics")
         search = request.query_params.get('search', '').strip()
         total_items = Item.objects.filter(Q(name__icontains=search) | Q(part_number__icontains=search)).count() if search else Item.objects.count()
         total_stocks = StockRecord.objects.filter(Q(item__name__icontains=search)).count() if search else StockRecord.objects.count()
+        total_bin_locations = StorageBin.objects.count()
+        total_active_rentals = StockRecord.objects.filter(quantity__gt=0).count()
+        total_expired_items = Item.objects.filter(expiry_date__lte=date.today()).count()
         data = [
             {"id": 1, "title": "Total Items", "value": total_items, "change": "+0%", "trend": "neutral"},
-            {"id": 2, "title": "Total Stocks", "value": total_stocks, "change": "+0%", "trend": "neutral"},
+            {"id": 2, "title": "Total Bin Locations", "value": total_bin_locations, "change": "+0%", "trend": "neutral"},
+            {"id": 3, "title": "Total Active Rentals", "value": total_active_rentals, "change": "+0%", "trend": "neutral"},
+            {"id": 4, "title": "Total Expired Items", "value": total_expired_items, "change": "+0%", "trend": "neutral"},
+            {"id": 5, "title": "Total Stocks", "value": total_stocks, "change": "+0%", "trend": "neutral"},
         ]
         return Response(data)
 
@@ -83,18 +84,21 @@ class StorageBinViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
+        from .models import StorageBin
         check_permission(self.request.user, page="storage_bins")
-        queryset = StorageBin.objects.all()
+        queryset = StorageBin.objects.all().order_by('-id')
         search = self.request.query_params.get('search', '').strip()
         if search:
             queryset = queryset.filter(Q(bin_id__icontains=search) | Q(description__icontains=search))
         return queryset
 
     def perform_create(self, serializer):
+        from .models import StorageBin
         check_permission(self.request.user, action="create_storage_bin")
         serializer.save(user=self.request.user)
 
     def perform_update(self, serializer):
+        from .models import StorageBin
         check_permission(self.request.user, action="update_storage_bin")
         serializer.save(user=self.request.user)
 
@@ -107,9 +111,10 @@ class ExpiredItemListView(APIView):
     pagination_class = StandardResultsSetPagination
 
     def get(self, request):
-        check_permission(self.request.user, page="expired_items")
+        from .models import Item
+        check_permission(request.user, page="expired_items")
         search = request.query_params.get('search', '').strip()
-        queryset = Item.objects.filter(expiry_date__lte=date.today())
+        queryset = Item.objects.filter(expiry_date__lte=date.today()).order_by('-created_at')
         if search:
             queryset = queryset.filter(Q(name__icontains=search) | Q(part_number__icontains=search))
         paginator = self.pagination_class()
@@ -123,18 +128,21 @@ class ItemViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
+        from .models import Item
         check_permission(self.request.user, page="items")
-        queryset = Item.objects.all()
+        queryset = Item.objects.all().order_by('-id')
         search = self.request.query_params.get('search', '').strip()
         if search:
             queryset = queryset.filter(Q(name__icontains=search) | Q(part_number__icontains=search))
         return queryset
 
     def perform_create(self, serializer):
+        from .models import Item
         check_permission(self.request.user, action="create_item")
         serializer.save(user=self.request.user)
 
     def perform_update(self, serializer):
+        from .models import Item
         check_permission(self.request.user, action="update_item")
         serializer.save(user=self.request.user)
 
@@ -148,23 +156,45 @@ class StockRecordViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
+        from .models import StockRecord
         check_permission(self.request.user, page="stock_records")
-        queryset = StockRecord.objects.all()
+        queryset = StockRecord.objects.select_related('item').order_by('-created_at')  # Add select_related
         search = self.request.query_params.get('search', '').strip()
         if search:
-            queryset = queryset.filter(Q(item__icontains=search))
+            queryset = queryset.filter(Q(item__name__icontains=search))
         print("StockRecord queryset:", list(queryset.values()))  # Debug log
         return queryset
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
     def perform_create(self, serializer):
+        from .models import StockRecord
         print("Creating stock with data:", serializer.validated_data)
         print("User:", self.request.user)  # Debug log
         check_permission(self.request.user, action="create_stock_record")
-        serializer.save(user=self.request.user)
+        stock_record = serializer.save(user=self.request.user)
+
+        if stock_record.storage_bin:
+            stock_record.storage_bin.used = max(0, stock_record.storage_bin.used + stock_record.quantity)
+            stock_record.storage_bin.save()
 
     def perform_update(self, serializer):
+        from .models import StockRecord
         check_permission(self.request.user, action="update_stock_record")
-        serializer.save(user=self.request.user)
+        old_record = self.get_object()
+        new_record = serializer.save(user=self.request.user)
+
+        if new_record.storage_bin:
+            diff = new_record.quantity - old_record.quantity
+            new_record.storage_bin.used = max(0, new_record.storage_bin.used + diff)
+            new_record.storage_bin.save()
 
     def perform_destroy(self, instance):
         check_permission(self.request.user, action="delete_stock_record")
@@ -176,18 +206,21 @@ class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
+        from .models import ExpiryTrackedItem
         check_permission(self.request.user, page="expiry_tracked_items")
-        queryset = ExpiryTrackedItem.objects.all()
+        queryset = ExpiryTrackedItem.objects.all().order_by('-id')
         search = self.request.query_params.get('search', '').strip()
         if search:
             queryset = queryset.filter(Q(name__icontains=search) | Q(batch__icontains=search))
         return queryset
 
     def perform_create(self, serializer):
+        from .models import ExpiryTrackedItem
         check_permission(self.request.user, action="create_expiry_tracked_item")
         serializer.save(user=self.request.user)
 
     def perform_update(self, serializer):
+        from .models import ExpiryTrackedItem
         check_permission(self.request.user, action="update_expiry_tracked_item")
         serializer.save(user=self.request.user)
 
@@ -195,12 +228,11 @@ class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
         check_permission(self.request.user, action="delete_expiry_tracked_item")
         instance.delete()
 
-
-
-
 class IoTEventView(APIView):
-    permission_classes = [APIKeyPermission]
+    permission_classes = [APIKeyPermission]  # Now properly defined via import
+
     def get(self, request):
+        from .models import LocationEvent, Item, StockRecord, StorageBin
         logger.debug(f"[IoTEventView] Processing GET request with query params: {request.query_params}")
         data = {
             'location': request.query_params.get('location'),
@@ -259,18 +291,20 @@ class IoTEventView(APIView):
                     )
                     storage_bin.used = max(0, storage_bin.used - quantity)
                     storage_bin.save()
-            logger.info(f"[IoTEventView] IoT event processed via GET: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
-            return Response({
-                "message": "Event processed successfully",
-                "event_id": event_obj.id,
-                "location": f"{storage_bin.row}-{storage_bin.rack}",
-                "item": item.name,
-                "quantity": quantity
-            }, status=200)
+                logger.info(f"[IoTEventView] IoT event processed via GET: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
+                return Response({
+                    "message": "Event processed successfully",
+                    "event_id": event_obj.id,
+                    "location": f"{storage_bin.row}-{storage_bin.rack}",
+                    "item": item.name,
+                    "quantity": quantity
+                }, status=200)
         except Exception as e:
             logger.error(f"[IoTEventView] Error processing IoT event via GET: {str(e)}")
             return Response({"error": str(e)}, status=500)
+
     def post(self, request):
+        from .models import LocationEvent, Item, StockRecord, StorageBin
         logger.debug(f"[IoTEventView] Processing POST request with data: {request.data}")
         serializer = LocationEventSerializer(data=request.data)
         if not serializer.is_valid():
@@ -322,14 +356,14 @@ class IoTEventView(APIView):
                     )
                     storage_bin.used = max(0, storage_bin.used - quantity)
                     storage_bin.save()
-            logger.info(f"[IoTEventView] IoT event processed via POST: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
-            return Response({
-                "message": "Event processed successfully",
-                "event_id": event_obj.id,
-                "location": f"{storage_bin.row}-{storage_bin.rack}",
-                "item": item.name,
-                "quantity": quantity
-            }, status=200)
+                logger.info(f"[IoTEventView] IoT event processed via POST: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
+                return Response({
+                    "message": "Event processed successfully",
+                    "event_id": event_obj.id,
+                    "location": f"{storage_bin.row}-{storage_bin.rack}",
+                    "item": item.name,
+                    "quantity": quantity
+                }, status=200)
         except Exception as e:
             logger.error(f"[IoTEventView] Error processing IoT event via POST: {str(e)}")
             return Response({"error": str(e)}, status=500)
