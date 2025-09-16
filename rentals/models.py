@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import uuid
 
 class Equipment(models.Model):
     name = models.CharField(max_length=100)
@@ -13,7 +14,7 @@ class Equipment(models.Model):
         return self.name
 
 class Rental(models.Model):
-    code = models.CharField(max_length=100, unique=True, blank=True)
+    code = models.CharField(max_length=20, unique=True, editable=False, default=uuid.uuid4)
     renter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='rentals')
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE, related_name='rentals')
     start_date = models.DateField()
@@ -23,18 +24,15 @@ class Rental(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        is_new = self._state.adding  # Check if the instance is being created
-        if is_new and not self.code:
-            super().save(*args, **kwargs)  # Save first to get an ID
-            self.code = f"RENT-{self.id:06d}"
-            super().save(update_fields=['code'])  # Update only the code field
-        else:
-            super().save(*args, **kwargs)  # Normal save for updates
+            if not self.code and not self.pk:  # Only before first save
+                super().save(*args, **kwargs)  # First save to get ID
+                self.code = f"RENT-{self.id:06d}"
+                super().save(update_fields=['code'])
+            else:
+                super().save(*args, **kwargs)
 
-    def __str__(self):
-        return f"{self.code} - {self.renter.full_name} - {self.equipment.name}"
-
-        
+            def __str__(self):
+                return f"{self.code} - {self.renter.full_name} - {self.equipment.name}"
 
 class RentalPayment(models.Model):
     rental = models.ForeignKey(Rental, on_delete=models.CASCADE, related_name='payments')

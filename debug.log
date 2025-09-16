@@ -13735,3 +13735,1362 @@ INFO 2025-09-16 13:01:31,811 views [ConversationViewSet] Fetching conversations 
 INFO 2025-09-16 13:01:33,381 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
 INFO 2025-09-16 13:01:43,331 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
 INFO 2025-09-16 13:01:53,338 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:12:52,880 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:13:55,926 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:13:55,927 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:13:55,941 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:13:55,951 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:13:55,959 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:13:55,973 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:05,871 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:15,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:25,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:35,862 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:45,991 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:14:55,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:05,859 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:15,975 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:25,983 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:35,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:45,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:15:55,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:01,339 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:16:01,364 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:16:01,372 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+DEBUG 2025-09-16 13:16:01,373 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+INFO 2025-09-16 13:16:01,375 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:16:01,407 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:16:01,430 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:16:01,432 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:16:02,552 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:16:02,553 views [UpdateLocationView] Nominatim response: {'place_id': 36078145, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:16:02,566 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+DEBUG 2025-09-16 13:16:03,535 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:16:03,536 views [UpdateLocationView] Nominatim response: {'place_id': 36078145, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:16:03,545 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+INFO 2025-09-16 13:16:05,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:11,296 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:21,305 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:31,297 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:32,992 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:41,297 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:16:51,298 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:01,286 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:11,298 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:21,311 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:31,299 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:32,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:41,301 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:17:51,292 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:01,302 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:11,297 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:21,310 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:31,287 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:32,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:41,312 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:18:51,290 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:01,294 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:11,305 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:21,293 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:31,296 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:32,996 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:41,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:19:51,995 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:20:00,597 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+DEBUG 2025-09-16 13:20:00,601 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+INFO 2025-09-16 13:20:01,289 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:20:03,130 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:20:03,132 views [UpdateLocationView] Nominatim response: {'place_id': 35567672, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:20:03,152 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+DEBUG 2025-09-16 13:20:04,142 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:20:04,143 views [UpdateLocationView] Nominatim response: {'place_id': 35567672, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:20:04,153 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+INFO 2025-09-16 13:20:11,975 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:20:22,006 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:20:31,980 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:20:32,994 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:20:41,308 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:20:51,289 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:01,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:11,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:21,981 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:31,991 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:41,983 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:21:51,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:22:01,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:22:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:22:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:23:32,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:23:32,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:24:32,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:24:32,998 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:25:32,994 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:25:32,995 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:26:33,021 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:26:33,021 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:26:41,296 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:26:51,293 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+ERROR 2025-09-16 13:26:52,955 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 64, in perform_create
+    serializer.save(renter=self.request.user, created_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 37, in create
+    return super().create(validated_data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 28, in save
+    super().save(*args, **kwargs)  # Save first to get an ID
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 66, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:27:01,294 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:11,297 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:21,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:31,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:32,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:41,990 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:27:51,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:02,000 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:11,746 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:21,872 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:31,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:41,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:28:51,991 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:29:01,998 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:29:11,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:29:21,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:29:32,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:29:32,991 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:30:17,474 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:30:18,429 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:30:24,212 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+ERROR 2025-09-16 13:30:26,091 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 64, in perform_create
+    serializer.save(renter=self.request.user, created_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 37, in create
+    return super().create(validated_data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 66, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:30:30,574 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:30:30,582 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:30:30,612 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:30:30,666 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:30:30,680 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:30:30,681 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:30:32,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:30:40,435 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:30:50,448 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+ERROR 2025-09-16 13:30:54,101 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 64, in perform_create
+    serializer.save(renter=self.request.user, created_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 37, in create
+    return super().create(validated_data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 991, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 66, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:31:00,460 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:10,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:20,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:30,976 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:32,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:39,039 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py changed, reloading.
+INFO 2025-09-16 13:31:39,938 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:31:41,008 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:48,574 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:31:48,580 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:48,598 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:31:48,630 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:31:48,640 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:31:48,644 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+ERROR 2025-09-16 13:31:58,244 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 64, in perform_create
+    serializer.save(renter=self.request.user, created_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 40, in create
+    rental = Rental.objects.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 66, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:31:58,459 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:08,978 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:18,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:28,992 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:32,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:38,990 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:48,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:32:58,975 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:33:32,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:33:33,018 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:34:32,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:34:33,009 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:26,438 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:28,983 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:32,992 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:38,988 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:48,976 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:35:58,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:36:08,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:36:18,990 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:36:32,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:36:32,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:37:32,992 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:37:33,019 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:38:32,990 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:38:33,027 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:38:56,432 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py changed, reloading.
+INFO 2025-09-16 13:38:57,396 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:39:02,353 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:05,832 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:39:05,840 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:05,887 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:39:05,918 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:39:05,930 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:05,933 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:39:15,740 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+ERROR 2025-09-16 13:39:17,070 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'Equipment'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 42, in validate
+    Equipment.objects.get(id=equipment_id)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 619, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\query.py", line 1588, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\query.py", line 1415, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\lookups.py", line 38, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\lookups.py", line 410, in get_prep_lookup
+    return super().get_prep_lookup()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\lookups.py", line 96, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+TypeError: Field 'id' expected a number but got <Equipment: portfolio>.
+INFO 2025-09-16 13:39:25,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:32,995 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:35,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:45,975 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:39:55,978 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:40:05,990 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:40:15,981 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:40:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:40:32,996 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:32,992 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:33,015 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:47,947 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py changed, reloading.
+INFO 2025-09-16 13:41:48,886 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:41:54,890 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:55,702 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:57,002 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:41:57,020 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:57,050 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:41:57,084 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:41:57,112 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:41:57,114 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:42:06,878 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+ERROR 2025-09-16 13:42:08,663 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 18, in create
+    serializer.is_valid(raise_exception=True)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 225, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 447, in run_validation
+    value = self.validate(value)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 31, in validate
+    logger.debug(f"Validating rental data: {data}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:42:16,884 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:42:26,887 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:42:33,124 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:42:36,998 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:42:46,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:42:56,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:43:06,976 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:43:16,980 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:43:26,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:43:32,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:44:13,970 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:44:16,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:44:26,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+WARNING 2025-09-16 13:44:33,492 log Unauthorized: /api/chat/conversations/
+WARNING 2025-09-16 13:44:33,545 log Not Found: /api/token/refresh/
+INFO 2025-09-16 13:44:36,984 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:44:46,989 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:44:56,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:45:06,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:45:33,007 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:45:52,224 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py changed, reloading.
+INFO 2025-09-16 13:45:53,187 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:46:00,695 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+WARNING 2025-09-16 13:46:02,811 log Unauthorized: /api/auth/profile/
+WARNING 2025-09-16 13:46:02,815 log Unauthorized: /api/auth/permissions/page/rentals_active/
+WARNING 2025-09-16 13:46:02,819 log Unauthorized: /api/chat/conversations/
+WARNING 2025-09-16 13:46:02,822 log Unauthorized: /api/auth/permissions/page/branding/
+WARNING 2025-09-16 13:46:02,826 log Unauthorized: /api/auth/profile/
+WARNING 2025-09-16 13:46:02,831 log Unauthorized: /api/auth/permissions/page/rentals_active/
+WARNING 2025-09-16 13:46:02,833 log Unauthorized: /api/chat/conversations/
+WARNING 2025-09-16 13:46:02,850 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,852 log Unauthorized: /api/auth/permissions/page/branding/
+WARNING 2025-09-16 13:46:02,854 log Unauthorized: /api/auth/profile/
+WARNING 2025-09-16 13:46:02,867 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,877 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,884 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,895 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,904 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,911 log Not Found: /api/token/refresh/
+WARNING 2025-09-16 13:46:02,914 log Unauthorized: /api/auth/profile/
+INFO 2025-09-16 13:46:14,670 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:46:14,673 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:46:14,715 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+DEBUG 2025-09-16 13:46:14,722 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+DEBUG 2025-09-16 13:46:14,722 connectionpool Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+INFO 2025-09-16 13:46:14,747 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:46:14,749 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:46:14,762 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+DEBUG 2025-09-16 13:46:16,104 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:46:16,105 views [UpdateLocationView] Nominatim response: {'place_id': 35567672, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:46:16,115 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+DEBUG 2025-09-16 13:46:17,180 connectionpool https://nominatim.openstreetmap.org:443 "GET /reverse?format=json&lat=4.878023&lon=6.9853474 HTTP/1.1" 200 581
+INFO 2025-09-16 13:46:17,181 views [UpdateLocationView] Nominatim response: {'place_id': 35567672, 'licence': 'Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright', 'osm_type': 'way', 'osm_id': 375073572, 'lat': '4.8780516', 'lon': '6.9853099', 'class': 'highway', 'type': 'residential', 'place_rank': 26, 'importance': 0.05337333409628439, 'addresstype': 'road', 'name': '', 'display_name': 'Rumuaholu, Obio/Akpor, Rivers, 500102, Nigeria', 'address': {'village': 'Rumuaholu', 'county': 'Obio/Akpor', 'state': 'Rivers', 'ISO3166-2-lvl4': 'NG-RI', 'postcode': '500102', 'country': 'Nigeria', 'country_code': 'ng'}, 'boundingbox': ['4.8777697', '4.8796830', '6.9850545', '6.9879350']}
+INFO 2025-09-16 13:46:17,190 views [UpdateLocationView] Updated location for user philipboluwatife0@gmail.com: city=, state=Rivers, score=100
+INFO 2025-09-16 13:46:24,551 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:46:34,553 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:46:43,021 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 9), 'due_date': datetime.date(2025, 9, 27), 'status': 'Overdue'}
+ERROR 2025-09-16 13:46:43,022 serializers Failed to create rental: UNIQUE constraint failed: rentals_rental.code
+ERROR 2025-09-16 13:46:43,072 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 82, in create
+    rental = Rental.objects.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 64, in perform_create
+    serializer.save(renter=self.request.user, created_by=self.request.user)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 90, in create
+    raise serializers.ValidationError(f"Failed to create rental: {str(e)}")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Failed to create rental: UNIQUE constraint failed: rentals_rental.code', code='invalid')]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 66, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:46:44,562 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:46:54,555 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:04,548 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:14,551 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:24,563 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:34,977 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:44,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:47:54,975 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:48:04,976 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:48:14,983 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:48:33,004 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:48:53,889 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:48:54,554 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:04,976 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:14,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:24,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:34,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:44,980 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:49:54,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:50:33,019 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:51:33,001 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:52:33,003 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:53:33,023 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:05,793 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py changed, reloading.
+INFO 2025-09-16 13:54:06,685 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:54:11,925 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py changed, reloading.
+INFO 2025-09-16 13:54:12,947 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:54:17,575 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:20,015 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:54:20,025 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:20,062 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:54:20,099 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:54:20,120 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:54:20,122 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:29,886 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:54:32,510 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 2), 'due_date': datetime.date(2025, 9, 15), 'status': 'Overdue'}
+ERROR 2025-09-16 13:54:32,512 serializers Failed to create rental: UNIQUE constraint failed: rentals_rental.code
+ERROR 2025-09-16 13:54:32,569 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 82, in create
+    rental = Rental.objects.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 70, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 90, in create
+    raise serializers.ValidationError(f"Failed to create rental: {str(e)}")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Failed to create rental: UNIQUE constraint failed: rentals_rental.code', code='invalid')]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 72, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:54:39,991 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:49,978 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:54:59,986 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:55:09,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:55:19,987 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:55:29,981 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:55:44,936 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:55:45,795 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:55:47,717 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:55:48,564 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:55:55,007 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:55:55,783 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:56:01,990 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:56:03,084 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:56:07,484 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 13:56:08,324 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 13:56:12,441 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:56:14,549 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:56:14,557 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:56:14,588 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:56:14,614 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:56:14,634 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:56:14,635 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 13:56:24,454 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 13:56:30,609 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 8), 'due_date': datetime.date(2025, 9, 17), 'status': 'Active'}
+ERROR 2025-09-16 13:56:30,610 serializers Failed to create rental: UNIQUE constraint failed: rentals_rental.code
+ERROR 2025-09-16 13:56:30,658 log Internal Server Error: /api/rentals/rentals/
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 82, in create
+    rental = Rental.objects.create(**validated_data)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py", line 27, in save
+    super().save(*args, **kwargs)  # First save to get ID
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: rentals_rental.code
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 70, in perform_create
+    serializer.save()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 210, in save
+    self.instance = self.create(validated_data)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\serializers.py", line 90, in create
+    raise serializers.ValidationError(f"Failed to create rental: {str(e)}")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='Failed to create rental: UNIQUE constraint failed: rentals_rental.code', code='invalid')]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py", line 72, in perform_create
+    logger.error(f"Error creating rental: {str(e)}")
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2025-09-16 13:56:34,462 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:58:26,168 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:58:34,444 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:58:44,961 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:58:55,008 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:59:04,964 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:59:14,967 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:59:24,971 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 13:59:34,965 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:00:33,170 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:00:42,597 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py changed, reloading.
+INFO 2025-09-16 14:00:45,724 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 14:00:57,581 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\views.py changed, reloading.
+INFO 2025-09-16 14:00:59,892 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 14:01:02,137 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 14:01:03,895 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 8), 'due_date': datetime.date(2025, 9, 17), 'status': 'Active'}
+ERROR 2025-09-16 14:01:03,898 serializers Failed to create rental: UNIQUE constraint failed: rentals_rental.code
+WARNING 2025-09-16 14:01:03,901 log Bad Request: /api/rentals/rentals/
+INFO 2025-09-16 14:01:04,447 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 14:01:06,773 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 8), 'due_date': datetime.date(2025, 9, 17), 'status': 'Active'}
+ERROR 2025-09-16 14:01:06,774 serializers Failed to create rental: UNIQUE constraint failed: rentals_rental.code
+WARNING 2025-09-16 14:01:06,775 log Bad Request: /api/rentals/rentals/
+INFO 2025-09-16 14:01:14,451 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:01:24,440 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:01:34,978 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:01:44,968 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:01:54,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:02:04,974 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:02:14,965 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:02:24,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:02:27,646 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 14:02:30,344 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 14:03:01,332 autoreload C:\Users\USER\Documents\Edmoss\kenyorProject\backend\rentals\models.py changed, reloading.
+INFO 2025-09-16 14:03:03,213 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 14:03:12,103 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+DEBUG 2025-09-16 14:03:14,307 serializers Validating rental data: {'equipment': <Equipment: portfolio>, 'start_date': datetime.date(2025, 9, 8), 'due_date': datetime.date(2025, 9, 17), 'status': 'Active'}
+DEBUG 2025-09-16 14:03:14,316 serializers Created rental: 77a1967a-607b-4cb8-a632-4895e62115ee
+INFO 2025-09-16 14:03:14,831 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:03:24,439 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com

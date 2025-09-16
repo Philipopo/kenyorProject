@@ -37,6 +37,9 @@ class EquipmentViewSet(ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(created_by=self.request.user)
 
+
+
+
 class RentalViewSet(ModelViewSet):
     queryset = Rental.objects.select_related('renter', 'equipment').all()
     serializer_class = RentalSerializer
@@ -55,19 +58,21 @@ class RentalViewSet(ModelViewSet):
         search = self.request.query_params.get('search', None)
         if search:
             queryset = queryset.filter(
-                Q(renter__full_name__icontains=search) | Q(equipment__name__icontains=search) | Q(code__icontains=search)
+                Q(renter__full_name__icontains=search) |
+                Q(equipment__name__icontains=search) |
+                Q(code__icontains=search)
             )
         return queryset.order_by('-created_at')
 
+    # ✅ Let the serializer handle renter/created_by
     def perform_create(self, serializer):
         try:
-            serializer.save(renter=self.request.user, created_by=self.request.user)
+            serializer.save()
         except Exception as e:
-            logger.error(f"Error creating rental: {str(e)}")
-            raise
+            #logger.error(f"Error creating rental: {str(e)}")
+            print(f"Error creating rental: {str(e)}")
 
-    def perform_update(self, serializer):
-        serializer.save(created_by=self.request.user)
+            raise
 
         
 
