@@ -186,14 +186,33 @@ RENTALS_ACTIONS = [
     "create_payment", "update_payment", "delete_payment"
 ]
 
-WAREHOUSE_PAGES = ['warehouse']
-WAREHOUSE_ACTIONS = ['create_warehouse_item', 'update_warehouse_item', 'delete_warehouse_item', 'update_location']
+
+WAREHOUSE_NEW_PAGES = ['warehouse_new']
+WAREHOUSE_NEW_ACTIONS = ['create_warehouse_new_item', 'update_warehouse_item', 'delete_warehouse_item', 'update_location']
+
+WAREHOUSE_PAGES = ['warehouse_']
+WAREHOUSE_ACTIONS = ['create_warehouse_item', 'update_warehouse_new_item', 'delete_warehouse_new_item', 'update_location']
+
+
+BRANDING_PAGES = ["branding", "company_branding"]  # Added company_branding
+ANNOUNCEMENT_PAGES = ["announcement"]
+
+BRANDING_ACTIONS = ["update_branding", "create_branding", "delete_branding"]
+ANNOUNCEMENT_ACTIONS = ["create_announcement", "update_announcement", "delete_announcement"]
+
+# Add these to your ERP and Tracker pages if they don't exist
+ERP_PAGES = ['erp_integration']
+TRACKER_PAGES = ['trackers']
 
 ALL_PAGES = (
     INVENTORY_PAGES + PROCUREMENT_PAGES + RECEIPT_PAGES + FINANCE_PAGES +
-    RENTALS_PAGES + ANALYTICS_PAGES + PRODUCT_DOCUMENTATION_PAGES + WAREHOUSE_PAGES
+    RENTALS_PAGES + ANALYTICS_PAGES + PRODUCT_DOCUMENTATION_PAGES + 
+    WAREHOUSE_NEW_PAGES + WAREHOUSE_PAGES + BRANDING_PAGES + ANNOUNCEMENT_PAGES +
+    ERP_PAGES + TRACKER_PAGES  # Added new pages
 )
+
 ALL_ACTIONS = (
     INVENTORY_ACTIONS + PROCUREMENT_ACTIONS + RECEIPT_ACTIONS + FINANCE_ACTIONS +
-    RENTALS_ACTIONS + ANALYTICS_ACTIONS + PRODUCT_DOCUMENTATION_ACTIONS + WAREHOUSE_ACTIONS
+    RENTALS_ACTIONS + ANALYTICS_ACTIONS + PRODUCT_DOCUMENTATION_ACTIONS + 
+    WAREHOUSE_NEW_ACTIONS + WAREHOUSE_ACTIONS + BRANDING_ACTIONS + ANNOUNCEMENT_ACTIONS
 )

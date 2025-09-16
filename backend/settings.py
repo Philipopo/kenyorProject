@@ -63,9 +63,11 @@ INSTALLED_APPS = [
     'alerts',
     'audit',
     'warehouse',
+    'warehouse_new',
     'product_documentation',
     'channels',  # For WebSocket support
     'chat',     # Add chat app
+    'activity_log',
     
 ]
 

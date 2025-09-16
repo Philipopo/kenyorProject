@@ -227,9 +227,10 @@ class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         check_permission(self.request.user, action="delete_expiry_tracked_item")
         instance.delete()
+        
 
 class IoTEventView(APIView):
-    permission_classes = [APIKeyPermission]  # Now properly defined via import
+    permission_classes = [APIKeyPermission]
 
     def get(self, request):
         from .models import LocationEvent, Item, StockRecord, StorageBin
@@ -266,7 +267,6 @@ class IoTEventView(APIView):
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
-                        category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
                         quantity=quantity,
                         critical=False,
@@ -283,7 +283,6 @@ class IoTEventView(APIView):
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
-                        category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
                         quantity=-quantity,
                         critical=(item.quantity <= 0),
@@ -331,7 +330,6 @@ class IoTEventView(APIView):
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
-                        category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
                         quantity=quantity,
                         critical=False,
@@ -348,7 +346,6 @@ class IoTEventView(APIView):
                     StockRecord.objects.create(
                         item=item,
                         storage_bin=storage_bin,
-                        category=item.manufacturer or 'General',
                         location=f"{storage_bin.row}-{storage_bin.rack}",
                         quantity=-quantity,
                         critical=(item.quantity <= 0),
