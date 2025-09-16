@@ -1,4 +1,3 @@
-# finance/models.py
 from django.db import models
 from django.conf import settings
 
@@ -16,7 +15,7 @@ class FinanceTransaction(models.Model):
         ('Purchase', 'Purchase'),
         ('Expense', 'Expense'),
     )
-
+    
     ref = models.CharField(max_length=50, blank=True)  # No unique=True
     type = models.CharField(max_length=10, choices=TRANSACTION_TYPES)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
@@ -25,12 +24,14 @@ class FinanceTransaction(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Save first to generate ID
+        # First save to generate the ID
+        super().save(*args, **kwargs)
+        
+        # If ref is not set, generate it from the ID
         if not self.ref:
             self.ref = f"TRX-{self.id}"
-            super().save(update_fields=['ref'])  # Update only ref
-        else:
-            super().save(*args, **kwargs)
+            # Use update_fields to avoid recursive save
+            super().save(update_fields=['ref'])
 
     def __str__(self):
         return self.ref
