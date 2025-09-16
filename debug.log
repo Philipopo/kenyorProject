@@ -15094,3 +15094,40 @@ DEBUG 2025-09-16 14:03:14,307 serializers Validating rental data: {'equipment': 
 DEBUG 2025-09-16 14:03:14,316 serializers Created rental: 77a1967a-607b-4cb8-a632-4895e62115ee
 INFO 2025-09-16 14:03:14,831 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
 INFO 2025-09-16 14:03:24,439 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:04:49,490 autoreload Watching for file changes with StatReloader
+INFO 2025-09-16 14:04:54,514 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:04,445 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:06,686 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 14:05:06,713 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:06,729 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 14:05:06,789 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 14:05:06,825 views [check_permission] Checking for user: philipboluwatife0@gmail.com, role: admin, page: user_profile, action: None
+INFO 2025-09-16 14:05:06,838 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:16,556 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:26,577 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:36,558 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:46,564 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:05:56,562 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:06,546 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:16,556 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:26,556 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:36,563 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:46,553 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:06:56,557 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:06,557 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:16,559 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:26,568 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:36,559 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:46,544 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:07:56,551 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:06,561 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:16,560 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:26,556 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:36,557 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:46,982 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:08:56,981 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:09:06,981 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:09:16,978 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:09:26,979 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:09:36,970 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
+INFO 2025-09-16 14:10:32,985 views [ConversationViewSet] Fetching conversations for user: philipboluwatife0@gmail.com
