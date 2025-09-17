@@ -1,21 +1,26 @@
 # product_documentation/models.py
 from django.db import models
 from django.conf import settings
+from inventory.models import Item  # Import Item from inventory app
 
 class ProductInflow(models.Model):
-    product_name = models.CharField(max_length=255)
-    sku = models.CharField(max_length=50, unique=True)
-    production_date = models.DateField()
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='inflows')  # Link to Item
+    batch = models.CharField(max_length=255)  # Batch number
+    vendor = models.CharField(max_length=255)  # Vendor name
+    date_of_delivery = models.DateField()  # Date of delivery
     quantity = models.PositiveIntegerField()
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name='inflows')
 
     class Meta:
-        ordering = ['-production_date']
+        ordering = ['-date_of_delivery']
+        indexes = [
+            models.Index(fields=['batch']),
+        ]
 
     def __str__(self):
-        return f"{self.product_name} ({self.sku})"
+        return f"{self.item.name} (Batch: {self.batch}) from {self.vendor}"
 
 class ProductSerialNumber(models.Model):
     inflow = models.ForeignKey(ProductInflow, on_delete=models.CASCADE, related_name='serial_numbers')
@@ -47,4 +52,4 @@ class ProductOutflow(models.Model):
         ordering = ['-dispatch_date']
 
     def __str__(self):
-        return f"{self.product.product_name} to {self.customer_name}"
+        return f"{self.product.item.name} to {self.customer_name}"

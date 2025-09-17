@@ -10,16 +10,16 @@ class SerialNumberSerializer(serializers.ModelSerializer):
 class ProductInflowSerializer(serializers.ModelSerializer):
     item_name = serializers.CharField(source='item.name', read_only=True)
     item_batch = serializers.CharField(source='item.batch', read_only=True)
-    serial_numbers = SerialNumberSerializer(many=True, read_only=True)
-    input_serial_numbers = serializers.CharField(write_only=True, required=False, allow_blank=True)
+    serial_numbers = SerialNumberSerializer(source='new_serial_numbers', many=True, read_only=True)
 
     class Meta:
         model = ProductInflow
         fields = [
             'id', 'item', 'item_name', 'item_batch', 'batch', 'vendor',
             'date_of_delivery', 'quantity', 'cost', 'serial_numbers',
-            'created_at', 'updated_at', 'input_serial_numbers'
+            'created_at', 'updated_at'
         ]
+        
         read_only_fields = ['id', 'item_name', 'item_batch', 'serial_numbers', 'created_at', 'updated_at']
 
     def validate_input_serial_numbers(self, value):
@@ -49,6 +49,7 @@ class ProductInflowSerializer(serializers.ModelSerializer):
         serial_numbers = validated_data.pop('input_serial_numbers', None)
         instance = super().update(instance, validated_data)
         if serial_numbers is not None:
+            # clear old serials
             instance.new_serial_numbers.all().delete()
             serials = [s.strip() for s in serial_numbers.split(',') if s.strip()]
             for serial in serials:

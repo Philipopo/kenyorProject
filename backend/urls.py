@@ -32,10 +32,11 @@ urlpatterns = [
     path('api/settings/', include('settings.urls')),
     path('api/alerts/', include('alerts.urls')),
     path('api/warehouse/', include('warehouse.urls')),
-    path('api/product-documentation/', include('product_documentation.urls')),
+    #path('api/product-documentation/', include('product_documentation.urls')),
     path('api/chat/', include('chat.urls', namespace='chat')),
     path('api/activity/', include('activity_log.urls')), 
     path('api/warehouse_new/', include('warehouse_new.urls', namespace='warehouse_new')),
+    path('api/product-documentation-new/', include('product_documentation_new.urls')),
    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

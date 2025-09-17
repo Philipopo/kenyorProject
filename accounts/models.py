@@ -180,6 +180,12 @@ PRODUCT_DOCUMENTATION_ACTIONS = [
     "create_product_outflow", "update_product_outflow", "delete_product_outflow",
 ]
 
+PRODUCT_DOCUMENTATION_NEW_PAGES = ["product_documentation_new", "product_inflow_new", "product_outflow_inflow_new"]
+PRODUCT_DOCUMENTATION_NEW_ACTIONS = [
+    "create_product_new_inflow", "update_product_new_inflow", "delete_product_new_inflow",
+    "create_product__new_outflow", "update_product_new_outflow", "delete_product_outflow",
+]
+
 RENTALS_ACTIONS = [
     "create_rental", "update_rental", "delete_rental",
     "create_equipment", "update_equipment", "delete_equipment",
@@ -206,13 +212,12 @@ TRACKER_PAGES = ['trackers']
 
 ALL_PAGES = (
     INVENTORY_PAGES + PROCUREMENT_PAGES + RECEIPT_PAGES + FINANCE_PAGES +
-    RENTALS_PAGES + ANALYTICS_PAGES + PRODUCT_DOCUMENTATION_PAGES + 
-    WAREHOUSE_NEW_PAGES + WAREHOUSE_PAGES + BRANDING_PAGES + ANNOUNCEMENT_PAGES +
+    RENTALS_PAGES + ANALYTICS_PAGES + PRODUCT_DOCUMENTATION_PAGES + PRODUCT_DOCUMENTATION_NEW_PAGES + WAREHOUSE_NEW_PAGES + WAREHOUSE_PAGES + BRANDING_PAGES + ANNOUNCEMENT_PAGES +
     ERP_PAGES + TRACKER_PAGES  # Added new pages
 )
 
 ALL_ACTIONS = (
     INVENTORY_ACTIONS + PROCUREMENT_ACTIONS + RECEIPT_ACTIONS + FINANCE_ACTIONS +
-    RENTALS_ACTIONS + ANALYTICS_ACTIONS + PRODUCT_DOCUMENTATION_ACTIONS + 
+    RENTALS_ACTIONS + ANALYTICS_ACTIONS + PRODUCT_DOCUMENTATION_ACTIONS + PRODUCT_DOCUMENTATION_NEW_ACTIONS + 
     WAREHOUSE_NEW_ACTIONS + WAREHOUSE_ACTIONS + BRANDING_ACTIONS + ANNOUNCEMENT_ACTIONS
 )

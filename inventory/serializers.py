@@ -28,7 +28,6 @@ class StockRecordSerializer(serializers.ModelSerializer):
         fields = ['id', 'item', 'item_name', 'storage_bin', 'storage_bin_id', 'location', 'quantity', 'critical', 'user', 'created_at']
         read_only_fields = ['user', 'item_name', 'storage_bin_id', 'created_at']
 
-        
 class LocationEventSerializer(serializers.ModelSerializer):
     location = serializers.CharField(write_only=True)
     item_name = serializers.CharField(write_only=True)
@@ -58,21 +57,32 @@ class LocationEventSerializer(serializers.ModelSerializer):
             return value
         if not isinstance(value, str):
             raise serializers.ValidationError(f"Location must be a string, got {type(value)}")
-        value = value.replace('–', '-').replace('—', '-').strip()
+        
+        # Normalize the location format (A1-R02)
+        value = value.replace('–', '-').replace('—', '-').strip().upper()
         logger.debug(f"[LocationEventSerializer] Normalized location: {value}")
+        
         if '-' not in value:
             raise serializers.ValidationError(f"Location must contain a hyphen, got: {value}")
+        
         try:
-            row, rack = value.split('-', 1)
+            # Parse the location format (A1-R02)
+            parts = value.split('-', 1)
+            if len(parts) != 2:
+                raise serializers.ValidationError(f"Location must be in format 'Aisle-Rack' (e.g., 'A1-R02')")
+                
+            row, rack = parts
             row, rack = row.strip(), rack.strip()
             logger.debug(f"[LocationEventSerializer] Split location: row={row}, rack={rack}")
+            
+            # Find the storage bin by row and rack
             storage_bin = StorageBin.objects.get(row__iexact=row, rack__iexact=rack)
             logger.debug(f"[LocationEventSerializer] Found StorageBin: {storage_bin.bin_id}")
             return storage_bin
         except ValueError as e:
             raise serializers.ValidationError(f"Invalid format: Location must be 'Aisle-Rack' (e.g., 'A1-R02'), error: {str(e)}")
         except StorageBin.DoesNotExist:
-            raise serializers.ValidationError(f"No StorageBin found for row={row}, rack={rack}")
+            raise serializers.ValidationError(f"No StorageBin found for location: {value}")
 
     def validate_event(self, value):
         valid_events = [choice[0] for choice in LocationEvent.EVENT_CHOICES]
@@ -87,6 +97,7 @@ class LocationEventSerializer(serializers.ModelSerializer):
         if not value:
             return timezone.now()
         try:
+            # Handle the format "13/09/2025 17:33:23"
             parsed = datetime.strptime(value, '%d/%m/%Y %H:%M:%S')
             return timezone.make_aware(parsed)
         except ValueError:

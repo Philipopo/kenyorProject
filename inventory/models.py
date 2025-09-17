@@ -26,7 +26,7 @@ class StorageBin(models.Model):
         """Update the 'used' field by summing quantities from related StockRecord entries."""
         total_used = self.stock_records.aggregate(total=Sum('quantity'))['total'] or 0
         if total_used != self.used:
-            self.used = total_used
+            self.used = max(0, total_used)  # Ensure it doesn't go negative
             self.save(update_fields=['used'])
 
 class ExpiryTrackedItem(models.Model):
@@ -47,7 +47,7 @@ class Item(models.Model):
     manufacturer = models.CharField(max_length=255)
     contact = models.CharField(max_length=255)
     batch = models.CharField(max_length=255)
-    custom_fields = JSONField()
+    custom_fields = models.JSONField(default=dict)
     expiry_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -84,6 +84,7 @@ class LocationEvent(models.Model):
     processed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default=1)
+    raw_location = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f"{self.storage_bin.bin_id} - {self.item.name} - {self.event} at {self.timestamp}"
@@ -109,3 +110,8 @@ class LocationEvent(models.Model):
                 self.save(update_fields=['processed'])
             except Exception as e:
                 print(f"Error processing event: {e}")
+
+
+
+
+

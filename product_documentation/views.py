@@ -23,8 +23,9 @@ class ProductInflowViewSet(viewsets.ModelViewSet):
         search = self.request.query_params.get('search', None)
         if search:
             queryset = queryset.filter(
-                Q(product_name__icontains=search) |
-                Q(sku__icontains=search)
+                Q(item__name__icontains=search) |
+                Q(batch__icontains=search) |
+                Q(vendor__icontains=search)
             )
         return queryset
 

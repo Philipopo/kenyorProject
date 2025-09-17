@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'channels',  # For WebSocket support
     'chat',     # Add chat app
     'activity_log',
+    'product_documentation_new',
     
 ]
 

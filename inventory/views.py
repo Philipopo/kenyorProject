@@ -11,7 +11,8 @@ from django.utils import timezone
 import logging
 
 from .serializers import StorageBinSerializer, ItemSerializer, StockRecordSerializer, ExpiryTrackedItemSerializer, LocationEventSerializer
-from accounts.permissions import APIKeyPermission  # Added missing import
+from accounts.permissions import APIKeyPermission
+from .models import LocationEvent, Item, StockRecord, StorageBin  # Import models directly
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +62,6 @@ class InventoryMetricsView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        from .models import Item, StockRecord, StorageBin
         check_permission(request.user, page="inventory_metrics")
         search = request.query_params.get('search', '').strip()
         total_items = Item.objects.filter(Q(name__icontains=search) | Q(part_number__icontains=search)).count() if search else Item.objects.count()
@@ -84,7 +84,6 @@ class StorageBinViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
-        from .models import StorageBin
         check_permission(self.request.user, page="storage_bins")
         queryset = StorageBin.objects.all().order_by('-id')
         search = self.request.query_params.get('search', '').strip()
@@ -93,12 +92,10 @@ class StorageBinViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        from .models import StorageBin
         check_permission(self.request.user, action="create_storage_bin")
         serializer.save(user=self.request.user)
 
     def perform_update(self, serializer):
-        from .models import StorageBin
         check_permission(self.request.user, action="update_storage_bin")
         serializer.save(user=self.request.user)
 
@@ -111,7 +108,6 @@ class ExpiredItemListView(APIView):
     pagination_class = StandardResultsSetPagination
 
     def get(self, request):
-        from .models import Item
         check_permission(request.user, page="expired_items")
         search = request.query_params.get('search', '').strip()
         queryset = Item.objects.filter(expiry_date__lte=date.today()).order_by('-created_at')
@@ -128,7 +124,6 @@ class ItemViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
-        from .models import Item
         check_permission(self.request.user, page="items")
         queryset = Item.objects.all().order_by('-id')
         search = self.request.query_params.get('search', '').strip()
@@ -137,12 +132,10 @@ class ItemViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        from .models import Item
         check_permission(self.request.user, action="create_item")
         serializer.save(user=self.request.user)
 
     def perform_update(self, serializer):
-        from .models import Item
         check_permission(self.request.user, action="update_item")
         serializer.save(user=self.request.user)
 
@@ -156,13 +149,11 @@ class StockRecordViewSet(viewsets.ModelViewSet):
     pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
-        from .models import StockRecord
         check_permission(self.request.user, page="stock_records")
-        queryset = StockRecord.objects.select_related('item').order_by('-created_at')  # Add select_related
+        queryset = StockRecord.objects.select_related('item').order_by('-created_at')
         search = self.request.query_params.get('search', '').strip()
         if search:
             queryset = queryset.filter(Q(item__name__icontains=search))
-        print("StockRecord queryset:", list(queryset.values()))  # Debug log
         return queryset
 
     def list(self, request, *args, **kwargs):
@@ -175,29 +166,24 @@ class StockRecordViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def perform_create(self, serializer):
-        from .models import StockRecord
-        print("Creating stock with data:", serializer.validated_data)
-        print("User:", self.request.user)  # Debug log
         check_permission(self.request.user, action="create_stock_record")
         stock_record = serializer.save(user=self.request.user)
 
         if stock_record.storage_bin:
-            stock_record.storage_bin.used = max(0, stock_record.storage_bin.used + stock_record.quantity)
-            stock_record.storage_bin.save()
+            stock_record.storage_bin.update_used()
 
     def perform_update(self, serializer):
-        from .models import StockRecord
         check_permission(self.request.user, action="update_stock_record")
         old_record = self.get_object()
         new_record = serializer.save(user=self.request.user)
 
         if new_record.storage_bin:
-            diff = new_record.quantity - old_record.quantity
-            new_record.storage_bin.used = max(0, new_record.storage_bin.used + diff)
-            new_record.storage_bin.save()
+            new_record.storage_bin.update_used()
 
     def perform_destroy(self, instance):
         check_permission(self.request.user, action="delete_stock_record")
+        if instance.storage_bin:
+            instance.storage_bin.update_used()
         instance.delete()
 
 class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
@@ -227,14 +213,80 @@ class ExpiryTrackedItemViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         check_permission(self.request.user, action="delete_expiry_tracked_item")
         instance.delete()
-        
 
 class IoTEventView(APIView):
     permission_classes = [APIKeyPermission]
+    
+    def process_iot_event(self, data):
+        """Process IoT event data and return response data or error"""
+        serializer = LocationEventSerializer(data=data)
+        if not serializer.is_valid():
+            logger.error(f"[IoTEventView] Invalid IoT event payload: {serializer.errors}")
+            return None, serializer.errors
+        
+        storage_bin = serializer.validated_data['storage_bin']
+        item = serializer.validated_data['item']
+        event = serializer.validated_data['event']
+        quantity = serializer.validated_data['quantity']
+        timestamp = serializer.validated_data.get('timestamp', timezone.now())
+        
+        try:
+            with transaction.atomic():
+                # Create the LocationEvent
+                event_obj = LocationEvent.objects.create(
+                    storage_bin=storage_bin,
+                    item=item,
+                    event=event,
+                    quantity=quantity,
+                    timestamp=timestamp,
+                    processed=True  # Mark as processed immediately
+                )
+                
+                # Find or create StockRecord for this item and bin
+                stock_record, created = StockRecord.objects.get_or_create(
+                    item=item,
+                    storage_bin=storage_bin,
+                    defaults={
+                        'quantity': 0,
+                        'location': f"{storage_bin.row}-{storage_bin.rack}",
+                        'user': None
+                    }
+                )
+                
+                # Update stock record based on event
+                if event == 'item_added':
+                    stock_record.quantity += quantity
+                    item.quantity += quantity
+                elif event == 'item_removed':
+                    # Ensure we don't remove more than available
+                    if stock_record.quantity < quantity:
+                        quantity = stock_record.quantity  # Only remove what's available
+                    stock_record.quantity -= quantity
+                    item.quantity = max(0, item.quantity - quantity)
+                
+                # Save changes
+                stock_record.save()
+                item.save()
+                
+                # Refresh the storage_bin to get updated used value
+                storage_bin.refresh_from_db()
+                
+                logger.info(f"[IoTEventView] IoT event processed: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
+                
+                return {
+                    "message": "Event processed successfully",
+                    "event_id": event_obj.id,
+                    "location": f"{storage_bin.row}-{storage_bin.rack}",
+                    "item": item.name,
+                    "quantity": quantity,
+                    "bin_used_capacity": storage_bin.used
+                }, None
+                
+        except Exception as e:
+            logger.error(f"[IoTEventView] Error processing IoT event: {str(e)}")
+            return None, {"error": str(e)}
 
     def get(self, request):
-        from .models import LocationEvent, Item, StockRecord, StorageBin
-        logger.debug(f"[IoTEventView] Processing GET request with query params: {request.query_params}")
         data = {
             'location': request.query_params.get('location'),
             'item_name': request.query_params.get('item_name'),
@@ -242,125 +294,14 @@ class IoTEventView(APIView):
             'quantity': request.query_params.get('quantity'),
             'timestamp': request.query_params.get('timestamp')
         }
-        serializer = LocationEventSerializer(data=data)
-        if not serializer.is_valid():
-            logger.error(f"[IoTEventView] Invalid IoT event payload for GET: {serializer.errors}")
-            return Response(serializer.errors, status=400)
-        storage_bin = serializer.validated_data['storage_bin']
-        item = serializer.validated_data['item']
-        event = serializer.validated_data['event']
-        quantity = serializer.validated_data['quantity']
-        timestamp = serializer.validated_data.get('timestamp', timezone.now())
-        try:
-            with transaction.atomic():
-                event_obj = LocationEvent.objects.create(
-                    storage_bin=storage_bin,
-                    item=item,
-                    event=event,
-                    quantity=quantity,
-                    timestamp=timestamp,
-                    processed=True
-                )
-                if event == 'item_added':
-                    item.quantity += quantity
-                    item.save()
-                    StockRecord.objects.create(
-                        item=item,
-                        storage_bin=storage_bin,
-                        location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=quantity,
-                        critical=False,
-                        user=None
-                    )
-                    storage_bin.used += quantity
-                    storage_bin.save()
-                elif event == 'item_removed':
-                    if item.quantity < quantity:
-                        logger.warning(f"[IoTEventView] Cannot remove {quantity} of item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
-                        return Response({"error": f"Cannot remove {quantity} of item: {item.name} has quantity {item.quantity}"}, status=400)
-                    item.quantity -= quantity
-                    item.save()
-                    StockRecord.objects.create(
-                        item=item,
-                        storage_bin=storage_bin,
-                        location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=-quantity,
-                        critical=(item.quantity <= 0),
-                        user=None
-                    )
-                    storage_bin.used = max(0, storage_bin.used - quantity)
-                    storage_bin.save()
-                logger.info(f"[IoTEventView] IoT event processed via GET: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
-                return Response({
-                    "message": "Event processed successfully",
-                    "event_id": event_obj.id,
-                    "location": f"{storage_bin.row}-{storage_bin.rack}",
-                    "item": item.name,
-                    "quantity": quantity
-                }, status=200)
-        except Exception as e:
-            logger.error(f"[IoTEventView] Error processing IoT event via GET: {str(e)}")
-            return Response({"error": str(e)}, status=500)
+        
+        response_data, error = self.process_iot_event(data)
+        if error:
+            return Response(error, status=400)
+        return Response(response_data, status=200)
 
     def post(self, request):
-        from .models import LocationEvent, Item, StockRecord, StorageBin
-        logger.debug(f"[IoTEventView] Processing POST request with data: {request.data}")
-        serializer = LocationEventSerializer(data=request.data)
-        if not serializer.is_valid():
-            logger.error(f"[IoTEventView] Invalid IoT event payload for POST: {serializer.errors}")
-            return Response(serializer.errors, status=400)
-        storage_bin = serializer.validated_data['storage_bin']
-        item = serializer.validated_data['item']
-        event = serializer.validated_data['event']
-        quantity = serializer.validated_data['quantity']
-        timestamp = serializer.validated_data.get('timestamp', timezone.now())
-        try:
-            with transaction.atomic():
-                event_obj = LocationEvent.objects.create(
-                    storage_bin=storage_bin,
-                    item=item,
-                    event=event,
-                    quantity=quantity,
-                    timestamp=timestamp,
-                    processed=True
-                )
-                if event == 'item_added':
-                    item.quantity += quantity
-                    item.save()
-                    StockRecord.objects.create(
-                        item=item,
-                        storage_bin=storage_bin,
-                        location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=quantity,
-                        critical=False,
-                        user=None
-                    )
-                    storage_bin.used += quantity
-                    storage_bin.save()
-                elif event == 'item_removed':
-                    if item.quantity < quantity:
-                        logger.warning(f"[IoTEventView] Cannot remove {quantity} of item {item.name} from {storage_bin.bin_id}: quantity is {item.quantity}")
-                        return Response({"error": f"Cannot remove {quantity} of item: {item.name} has quantity {item.quantity}"}, status=400)
-                    item.quantity -= quantity
-                    item.save()
-                    StockRecord.objects.create(
-                        item=item,
-                        storage_bin=storage_bin,
-                        location=f"{storage_bin.row}-{storage_bin.rack}",
-                        quantity=-quantity,
-                        critical=(item.quantity <= 0),
-                        user=None
-                    )
-                    storage_bin.used = max(0, storage_bin.used - quantity)
-                    storage_bin.save()
-                logger.info(f"[IoTEventView] IoT event processed via POST: {event} at {storage_bin.bin_id} for {item.name}, quantity: {quantity}")
-                return Response({
-                    "message": "Event processed successfully",
-                    "event_id": event_obj.id,
-                    "location": f"{storage_bin.row}-{storage_bin.rack}",
-                    "item": item.name,
-                    "quantity": quantity
-                }, status=200)
-        except Exception as e:
-            logger.error(f"[IoTEventView] Error processing IoT event via POST: {str(e)}")
-            return Response({"error": str(e)}, status=500)
+        response_data, error = self.process_iot_event(request.data)
+        if error:
+            return Response(error, status=400)
+        return Response(response_data, status=200)
